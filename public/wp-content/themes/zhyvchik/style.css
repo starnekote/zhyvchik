@@ -1,0 +1,188 @@
+/*
+Theme Name: Zhyvchik
+Author: Твоє Ім'я або KKStudio
+Version: 1.0
+Description: Опис твоєї нової теми
+*/
+
+@font-face {
+  font-family: 'Noto Serif Variable';
+  src: url('./assets/fonts/NotoSerif-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900; /* Діапазон жирності */
+  font-stretch: 62.5% 100%; /* Діапазон ширини (wdth) */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Курсивне накреслення (Italic) */
+@font-face {
+  font-family: 'Noto Serif Variable';
+  src: url('./assets/fonts/NotoSerif-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-stretch: 62.5% 100%;
+  font-style: italic; /* Вказуємо, що цей файл для курсиву */
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope Variable';
+  src: url('./assets/fonts/Manrope-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-stretch: 62.5% 100%;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter Variable';
+  src: url('./assets/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-stretch: 62.5% 100%;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('./assets/fonts/PlayfairDisplay-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+    margin: 0;
+    text-decoration: none;
+}
+
+@media (min-width: 390px) {
+    html {
+        font-size: 10px;
+    }
+
+    header {
+      background-color: #F7E7CE;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.4rem 1.6rem;
+    }
+
+    header button {
+      background: none;
+      border: none;
+    }
+
+    header a {
+      text-align: center;
+      display: block;
+      font-family: 'Inter Variable';
+      font-weight: 500;
+      font-size: 2rem;
+      letter-spacing: 0.4rem;
+      line-height: 2.8rem;
+      color: #2D2D2D;
+    }
+
+    /* КАТЕГОРІЇ */
+    .container {
+      position: relative;
+      margin: 0 auto;
+      width: 342px;
+      height: auto;
+      overflow: hidden;
+    }
+
+    .categories {
+      height: fit-content;
+      margin: 6.4rem 0;
+    }
+
+    .categories ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .categories ul li {
+      width: 47%;
+      height: auto;
+      aspect-ratio: 5/6;
+    }
+
+    .categories ul li a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 5/6;
+    }
+
+    .categories ul li a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    .categories ul li img {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .categories ul li span{
+      width: fit-content;
+      font-family: 'Playfair Display';
+      font-size: 2rem;
+      font-weight: 400;
+      color: #ffffff;
+      z-index: 3;
+    }
+
+    .categories ul li:first-of-type {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4/3;
+      margin-bottom: 2.4rem;
+    }
+
+    .categories ul li:first-of-type a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4/3;
+    }
+
+    .categories ul li:first-of-type img {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .categories ul li:first-of-type span {
+      width: fit-content;
+      font-family: 'Playfair Display';
+      font-size: 3rem;
+      font-weight: 400;
+      color: #ffffff;
+      z-index: 2;
+    }
+
+
+}
+
