@@ -10,4 +10,9 @@ function add_scripts_and_styles() {
     wp_enqueue_script('swiper', get_template_directory_uri().'/assets/js/swiper-bundle.min.js', array(), null, true);
 }
 
+add_action('after_setup_theme', 'add_menu');
+    function add_menu() {
+        register_nav_menu('top', 'Головне меню');
+        }
+
 ?>

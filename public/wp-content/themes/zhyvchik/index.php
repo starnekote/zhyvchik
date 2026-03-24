@@ -31,7 +31,20 @@
     </header>
 
     <!-- КАТЕГОРІЇ -->
-    <section class="categories">
+     <section class="categories">
+        <div class="container">
+            <?php
+                wp_nav_menu( [
+                    'theme_location'  => 'top', //ідентифікатор нашого меню
+                    'menu'            => '', //меню яке потрібно вивести
+                    'container'       => 'div', //чим огортати тег ul
+                    'container_class' => 'front-page-menu', //клас контейнера меню
+                ] );
+            ?>
+        </div>
+    </section>
+
+    <!-- <section class="categories">
         <div class="container">
             <div class="front-page-menu">
                 <ul>
@@ -56,7 +69,7 @@
                 </ul>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- ОСТАННІ НАДХОДЖЕННЯ -->
     <section class="last-arrivals">
