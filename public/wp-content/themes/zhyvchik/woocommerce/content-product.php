@@ -24,7 +24,7 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li <?php wc_product_class( '', $product ); ?>>
+<li class="swiper-slide" <?php wc_product_class( '', $product ); ?>>
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
@@ -33,6 +33,9 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	 */
 	do_action( 'woocommerce_before_shop_loop_item' );
 
+	?>
+	<div class="img-wrapper">
+	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item_title.
 	 *
@@ -40,7 +43,9 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_product_thumbnail - 10
 	 */
 	do_action( 'woocommerce_before_shop_loop_item_title' );
-
+	?>
+	</div>
+	<?php
 	/**
 	 * Hook: woocommerce_shop_loop_item_title.
 	 *

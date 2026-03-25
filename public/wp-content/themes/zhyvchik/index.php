@@ -32,24 +32,26 @@
     <section class="hero">
         <div class="hero-swiper">
             <ul class="swiper-wrapper">
-                <li class="swiper-slide"
-                style="background-image: url(assets/images/Gemini_Generated_Image_52a1qy52a1qy52a12.png);">
-                    <h1>Elevated Hydration</h1>
-                    <h2>The Purest Sources, Refined</h2>
-                    <button>Shop Collection</button>
-                </li>
-                <li class="swiper-slide"
-                style="background-image: url(assets/images/Gemini_Generated_Image_52a1qy52a1qy52a12.png);">
-                    <h1>Elevated Hydration2</h1>
-                    <h2>The Purest Sources, Refined</h2>
-                    <button>Shop Collection</button>
-                </li>
-                <li class="swiper-slide"
-                style="background-image: url(assets/images/Gemini_Generated_Image_52a1qy52a1qy52a12.png);">
-                    <h1>Elevated Hydration3</h1>
-                    <h2>The Purest Sources, Refined</h2>
-                    <button>Shop Collection</button>
-                </li>
+                <?php 
+                    $posts = get_posts([
+                        'numberposts' => -1,
+                        'category_name' => 'hero-section',
+                        'post_type' => 'post',
+                        'suppress_filters' => true
+                        ]);
+                    foreach($posts as $post) {
+                        setup_postdata($post);
+                ?>  
+                    <li class="swiper-slide"
+                    style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>);">
+                        <h1><?php the_title(); ?></h1>
+                        <h2><?php the_content(); ?></h2>
+                        <button><?php echo CFS()->get('button-text'); ?></button>
+                    </li>
+                <?php
+                }
+                wp_reset_postdata();
+                ?>
             </ul>
             <div class="swiper-pagination"></div>
         </div>
@@ -69,33 +71,6 @@
         </div>
     </section>
 
-    <!-- <section class="categories">
-        <div class="container">
-            <div class="front-page-menu">
-                <ul>
-                    <li>
-                        <a href="">
-                            <img src="assets/images/Gemini_Generated_Image_1a3n4q1a3n4q1a3n.png" alt="">
-                            <span>Дорослим</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="assets/images/Gemini_Generated_Image_j2cqc9j2cqc9j2cq.png" alt="">
-                            <span>Дітям</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="assets/images/Gemini_Generated_Image_aysh41aysh41aysh.png" alt="">
-                            <span>Всі напої</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section> -->
-
     <!-- ОСТАННІ НАДХОДЖЕННЯ -->
     <section class="last-arrivals">
         <div class="container">
@@ -104,18 +79,7 @@
                 <h1>Останні надходження</h1>
                 <a href="">Дивитись всі</a>
             </div>
-            <div class="last-arrivals-swiper">
-                <ul class="swiper-wrapper">
-                    <li class="swiper-slide">
-                        <a href="">
-                            <div class="img-wrapper">
-                                <img src="" alt="">
-                            </div>
-                            
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <?php echo do_shortcode('[recent_products class="product-swiper"]'); ?>
         </div>
     </section>
 <?php wp_footer(); ?>
