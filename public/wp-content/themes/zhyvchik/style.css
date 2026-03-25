@@ -60,7 +60,7 @@ Description: Опис твоєї нової теми
     }
 
     header {
-      background-color: #F7E7CE;
+      background-color: #ffffff;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -183,6 +183,102 @@ Description: Опис твоєї нової теми
       z-index: 2;
     }
 
+    /* HERO SECTION */
 
+    .hero {
+      width: 100%;
+      height: fit-content;
+    }
+
+    .hero .hero-swiper {
+      position: relative;
+    }
+
+    .hero ul {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero ul li {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 9/16;
+      background-position: center;
+      background-size: contain;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .swiper-slide::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(45,45,45,0) 0%, rgba(45,45,45, 0.5) 100%);
+      z-index: 1;
+    }
+
+    .swiper-slide h1, 
+    .swiper-slide h2, 
+    .swiper-slide button {
+      position: relative;
+      z-index: 2;
+    }
+
+    .swiper-slide button {
+      margin: 3.2rem 0 6.4rem 0;
+      padding: 1.2rem 3.2rem;
+      background-color: #Ffffff;
+      border: none;
+      font-family: 'Inter Variable';
+      font-weight: 500;
+      letter-spacing: 0.14rem;
+      font-size: 1.4rem;
+      color: #2D2D2D;
+      text-transform: uppercase;
+    }
+
+    .swiper-slide h1 {
+      font-family: 'Playfair Display';
+      font-weight: 400;
+      font-size: 3.6rem;
+      color: #Ffffff;
+    }
+
+    .swiper-slide h2 {
+      font-family: 'Inter Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: #Ffffff;
+      margin-top: 1.6rem;
+      text-transform: uppercase;
+    }
+
+    .swiper-pagination {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      bottom: 20px !important;
+    }
+
+    .swiper-pagination-bullet {
+      width: 48px !important;
+      height: 2px !important;
+      background-color: rgba(250, 250, 250, 0.4) !important;
+      border-radius: 0 !important;
+      opacity: 1 !important;
+      margin: 0 !important;
+      transition: background-color 0.3s ease;
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: rgba(250, 250, 250, 1) !important;
+    }
 }
 

@@ -14,7 +14,7 @@
             </svg>
         </button>
         <a class="logo" href="">
-            PURE <br> ESSENCE
+            ЖИВЧИК<br>
         </a>
         <div>
             <button>
@@ -29,6 +29,31 @@
             </button>
         </div>
     </header>
+    <section class="hero">
+        <div class="hero-swiper">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide"
+                style="background-image: url(assets/images/Gemini_Generated_Image_52a1qy52a1qy52a12.png);">
+                    <h1>Elevated Hydration</h1>
+                    <h2>The Purest Sources, Refined</h2>
+                    <button>Shop Collection</button>
+                </li>
+                <li class="swiper-slide"
+                style="background-image: url(assets/images/Gemini_Generated_Image_52a1qy52a1qy52a12.png);">
+                    <h1>Elevated Hydration2</h1>
+                    <h2>The Purest Sources, Refined</h2>
+                    <button>Shop Collection</button>
+                </li>
+                <li class="swiper-slide"
+                style="background-image: url(assets/images/Gemini_Generated_Image_52a1qy52a1qy52a12.png);">
+                    <h1>Elevated Hydration3</h1>
+                    <h2>The Purest Sources, Refined</h2>
+                    <button>Shop Collection</button>
+                </li>
+            </ul>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
 
     <!-- КАТЕГОРІЇ -->
      <section class="categories">
