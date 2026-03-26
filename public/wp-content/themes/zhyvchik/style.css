@@ -285,6 +285,46 @@ ul {
     }
 
     /* ОСТАННІ НАДХОДЖЕННЯ */
+    .last-arrivals {
+      margin: 4.8rem 0;
+    }
+
+    .last-arrivals .last-arrivals-header {
+      margin-bottom: 3.2rem;
+    }
+
+    .last-arrivals .last-arrivals-header h2 {
+      font-family: 'Inter Variable';
+      font-weight: 400;
+      font-size: 1rem;
+      color: #9CA3AF;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .last-arrivals .last-arrivals-header span {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+    }
+
+    .last-arrivals .last-arrivals-header span h1 {
+      font-family: 'Playfair Display';
+      font-weight: 400;
+      font-size: 3rem;
+      color: #2D2D2D;
+    }
+
+    .last-arrivals .last-arrivals-header span a {
+      display: block;
+      font-family: 'Inter Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: #2D2D2D;
+      border-bottom: solid 1px #2D2D2D;
+      padding-bottom: 0.4rem;
+    }
+
     .last-arrivals li a {
       width: 100%;
     }
@@ -297,6 +337,20 @@ ul {
       align-items: center;
       justify-content: center;
       margin-bottom: 1.6rem;
+    }
+
+    .last-arrivals li a .onsale {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.2rem;
+      padding: 0.2rem 0.8rem;
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #ffffff;
+      background-color: #775A19;
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
     }
 
     .last-arrivals li a img {
@@ -325,13 +379,70 @@ ul {
     }
 
     .last-arrivals li a .price {
-      display: flex;
+      display: inline-flex;
+      align-items: center;
       width: 100%;
+      margin-bottom: 0.4rem;
     }
 
     .last-arrivals li a .price .screen-reader-text {
       display: none;
     }
+
+    .last-arrivals li a .price * {
+      font-family: 'Manrope Variable';
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: #1B1C15;
+    }
+
+    .last-arrivals li a .price del bdi,
+    .last-arrivals li a .price del .woocommerce-Price-currencySymbol {
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: #4D4635;
+    }
     
+    .last-arrivals li a .price ins {
+      order: 1;
+      text-decoration: none;
+    }
+
+    .last-arrivals li a .price del {
+      order: 2;
+      margin-left: 8px; 
+      text-decoration: line-through #4D4635 !important; 
+    }
+
+    .last-arrivals li .add_to_cart_button,
+    .last-arrivals li .add_to_cart_button.product_type_variable {
+      display: block;
+      width: 100%;
+      padding: 1.2rem 0;
+      background-color: #5F5E5E;
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      font-size: 1rem;
+      color: #ffffff;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .last-arrivals li .product_type_grouped,
+    .last-arrivals li .product_type_variable {
+      display: block;
+      width: 100%;
+      padding: 1.2rem 0;
+      border: 1px solid rgba(208, 197, 175, 0.4);
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      font-size: 1rem;
+      color: #5F5E5E;
+      text-align: center;
+      text-transform: uppercase;
+    }
 }
 

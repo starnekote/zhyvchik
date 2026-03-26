@@ -74,10 +74,12 @@
     <!-- ОСТАННІ НАДХОДЖЕННЯ -->
     <section class="last-arrivals">
         <div class="container">
-            <div>
-                <h2>сезонні</h2>
-                <h1>Останні надходження</h1>
-                <a href="">Дивитись всі</a>
+            <div class="last-arrivals-header">
+                <h2>останні</h2>
+                <span>
+                    <h1>Надходження</h1>
+                    <a href="">Дивитись всі</a>
+                </span>
             </div>
             <?php echo do_shortcode('[recent_products class="product-swiper"]'); ?>
         </div>
