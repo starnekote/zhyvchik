@@ -26,6 +26,7 @@ $id_suffix = wp_unique_id();
 	<?php if ( $use_label ) : ?>
 		<label for="woocommerce-orderby-<?php echo esc_attr( $id_suffix ); ?>"><?php echo esc_html__( 'Sort by', 'woocommerce' ); ?></label>
 	<?php endif; ?>
+	<span>сортування:</span>
 	<select
 		name="orderby"
 		class="orderby"

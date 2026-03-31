@@ -84,7 +84,7 @@ ul {
       font-weight: 500;
       font-size: 2rem;
       letter-spacing: 0.4rem;
-      line-height: 2.8rem;
+      line-height: 6.4rem;
       color: #2D2D2D;
     }
 
@@ -289,6 +289,14 @@ ul {
       margin: 4.8rem 0;
     }
 
+    .last-arrivals .product-container {
+      position: relative;
+      margin: 0 0 0 auto;
+      width: 366px;
+      height: auto;
+      overflow: hidden;
+    }
+
     .last-arrivals .last-arrivals-header {
       margin-bottom: 3.2rem;
     }
@@ -325,11 +333,27 @@ ul {
       padding-bottom: 0.4rem;
     }
 
-    .last-arrivals li a {
+    .products .container {
+      width: 92%;
+    }
+
+    .products .columns-2 {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      row-gap: 4rem;
+    }
+
+    .products .columns-2 li {
+      width: 48%;
+    }
+
+    .last-arrivals li a,
+    .products li a{
       width: 100%;
     }
 
-    .last-arrivals li a .img-wrapper {
+    .last-arrivals li a .img-wrapper,
+    .products li a .img-wrapper {
       width: 100%;
       aspect-ratio: 2 / 3;
       background-color: #F5F4E8;
@@ -339,7 +363,8 @@ ul {
       margin-bottom: 1.6rem;
     }
 
-    .last-arrivals li a .onsale {
+    .last-arrivals li a .onsale,
+    .products li a .onsale {
       position: absolute;
       top: 1.2rem;
       left: 1.2rem;
@@ -353,24 +378,28 @@ ul {
       letter-spacing: 0.9px;
     }
 
-    .last-arrivals li a img {
+    .last-arrivals li a img,
+    .products li a img {
       width: 85%;
       aspect-ratio: 1 / 1;
       object-fit: contain;
     }
 
-    .last-arrivals li .custom-star-rating {
+    .last-arrivals li .custom-star-rating,
+    .products li .custom-star-rating {
       width: 100%;
       display: flex;
       gap: 0.4rem;
       margin-bottom: 0.4rem;
     }
 
-    .last-arrivals li .custom-star-rating  .star-icon {
+    .last-arrivals li .custom-star-rating  .star-icon,
+    .products li .custom-star-rating  .star-icon {
       width: 0.8rem;
     }
 
-    .last-arrivals li a h2 {
+    .last-arrivals li a h2,
+    .products li a h2 {
       font-family: 'Noto Serif Variable';
       font-weight: 400;
       font-size: 1.8rem;
@@ -378,18 +407,21 @@ ul {
       margin-bottom: 0.4rem;
     }
 
-    .last-arrivals li a .price {
+    .last-arrivals li a .price,
+    .products li a .price {
       display: inline-flex;
       align-items: center;
       width: 100%;
       margin-bottom: 0.4rem;
     }
 
-    .last-arrivals li a .price .screen-reader-text {
+    .last-arrivals li a .price .screen-reader-text,
+    .products li a .price .screen-reader-text {
       display: none;
     }
 
-    .last-arrivals li a .price * {
+    .last-arrivals li a .price *,
+    .products li a .price * {
       font-family: 'Manrope Variable';
       font-weight: 600;
       font-size: 1.4rem;
@@ -397,26 +429,32 @@ ul {
     }
 
     .last-arrivals li a .price del bdi,
-    .last-arrivals li a .price del .woocommerce-Price-currencySymbol {
+    .last-arrivals li a .price del .woocommerce-Price-currencySymbol,
+    .products li a .price del bdi,
+    .products li a .price del .woocommerce-Price-currencySymbol {
       font-family: 'Manrope Variable';
       font-weight: 400;
       font-size: 1.2rem;
       color: #4D4635;
     }
     
-    .last-arrivals li a .price ins {
+    .last-arrivals li a .price ins,
+    .products li a .price ins {
       order: 1;
       text-decoration: none;
     }
 
-    .last-arrivals li a .price del {
+    .last-arrivals li a .price del,
+    .products li a .price del {
       order: 2;
       margin-left: 8px; 
       text-decoration: line-through #4D4635 !important; 
     }
 
     .last-arrivals li .add_to_cart_button,
-    .last-arrivals li .add_to_cart_button.product_type_variable {
+    .last-arrivals li .add_to_cart_button.product_type_variable,
+    .products li .add_to_cart_button,
+    .products li .add_to_cart_button.product_type_variable {
       display: block;
       width: 100%;
       padding: 1.2rem 0;
@@ -431,7 +469,9 @@ ul {
     }
 
     .last-arrivals li .product_type_grouped,
-    .last-arrivals li .product_type_variable {
+    .last-arrivals li .product_type_variable,
+    .products li .product_type_grouped,
+    .products li .product_type_variable {
       display: block;
       width: 100%;
       padding: 1.2rem 0;
@@ -444,5 +484,483 @@ ul {
       text-align: center;
       text-transform: uppercase;
     }
-}
 
+    /* СТАТТІ */
+
+    .journal {
+      margin: 8rem 0;
+    }
+
+    .journal .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2.3rem;
+    }
+
+    .journal .container * {
+      text-align: center;
+    }
+
+    .journal h1 {
+      font-family: 'Playfair Display';
+      font-weight: 400;
+      font-size: 3rem;
+      line-height: 3.6rem;
+      color: #2D2D2D;
+    }
+
+    .journal h2 {
+      font-family: 'Inter Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 2.2rem;
+      color: #4B5563;
+    }
+
+    .journal a {
+      display: block;
+      font-family: 'Inter Variable';
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      letter-spacing: 0.24rem;
+      color: #4B5563;
+      padding-bottom: 0.8rem;
+      border-bottom: solid #F7E7CE 2px;
+    }
+
+    /* ФУТЕР */
+    footer {
+      padding: 6.4rem 0 3.2rem 0;   
+      background-color: #2D2D2D; 
+    }
+
+    footer .container {
+      width: 84%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3.2rem;
+    }
+
+    footer .container h1 {
+      font-family: 'Inter Variable';
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+      letter-spacing: 0.72rem;
+      color: #FFFFFF;
+    }
+
+    footer .container .contact {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer .container .contact * {
+      font-family: 'Inter Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 2.8rem;
+      color: #9CA3AF;
+      text-align: center;
+    }
+
+    footer .container .social {
+      width: 7.2rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    footer .container ul {
+      width: 84%;
+      max-height: 8rem;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: space-between;
+      gap: 1.6rem;
+    }
+
+    footer .container ul * {
+      font-family: 'Inter Variable';
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      letter-spacing: 0.12rem;
+      text-transform: uppercase;
+      color: #D1D5DB;
+      text-align: center;
+    }
+
+    footer .container .policy {
+      font-family: 'Inter Variable';
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      letter-spacing: 0.05rem;
+      text-transform: uppercase;
+      color: #6B7280;
+    }
+
+    /* СТОРІНКА КАТАЛОГ */
+    /* ХЕДЕР */
+    .catalog-header {
+      margin: 3.2rem 0;
+    }
+
+    .catalog-header header {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0;
+    }
+
+    .catalog-header header h1 {
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-size: 3.6rem;
+      line-height: 4.5rem;
+      letter-spacing: -0.1rem;
+      color: #1B1C15;
+      margin-bottom: 0.8rem;
+    }
+
+    .catalog-header header p {
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      color: #4D4635;
+    }
+
+    /* МЕНЮ КАТЕГОРІЙ */
+    .catalog-categories {
+      margin-bottom: 3.2rem;
+    }
+
+    .catalog-categories .container {
+      position: relative;
+      margin: 0 0 0 auto;
+      width: 366px;
+      height: auto;
+      overflow: hidden;
+    }
+
+    .catalog-categories li a {
+      display: block;
+      text-align: center;
+      padding: 0.8rem 2.4rem;
+      text-transform: uppercase;
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      letter-spacing: 0.12rem;
+      color: #4D4635;
+      border: 1px solid rgba(208,197,175,0.3);
+      border-radius: 1.2rem;
+    }
+
+    .catalog-categories .current-menu-item a{
+      background-color: #FFFFFF;
+      color: #775A19;
+      border: 1px solid #D0C5AF;
+    }
+
+    /* КНОПКА ФІЛЬТРАЦІЯ */
+    .catalog-filter-sort {
+      margin: 1.6rem 0 5.2rem 0;
+    }
+
+    .catalog-filter-sort .container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .catalog-filter-sort .wc-block-product-filters__open-overlay {
+      position: relative;
+      width: 8rem;
+      display: flex;
+    }
+
+    .catalog-filter-sort .wc-block-product-filters__open-overlay svg {
+      display: none;
+    }
+
+    .catalog-filter-sort .wc-block-product-filters__open-overlay span {
+      font-size: 0; 
+      line-height: 0;
+    }
+
+    .catalog-filter-sort .wc-block-product-filters__open-overlay span::before {
+      content: "";
+      display: inline-block;
+      width: 1.6rem;
+      height: 1.6rem;
+      background-image: url(assets/images/filter.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-right: 8px;
+      opacity: 1;
+    }
+
+    .catalog-filter-sort .wc-block-product-filters__open-overlay span::after {
+      content: "фільтр";
+      position: absolute;
+      opacity: 1;
+      text-transform: uppercase;
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      letter-spacing: 0.12rem;
+      color: #1B1C15;
+    }
+
+    /* ВІКНО ФІЛЬТРАЦІЇ */
+    .catalog-filter-sort .wc-block-product-filters__apply {
+      display: none;
+    }
+
+    .catalog-filter-sort .wc-block-product-filters__overlay-wrapper{
+      height: 70%;
+    }
+
+    /* 1. Головний контейнер оверлею залишаємо на весь екран, щоб фон (backdrop) затемнював усе */
+    .wc-block-product-filters__overlay {
+      height: 100vh !important;
+    }
+
+    /* 2. Обгортка, яка тримає діалогове вікно */
+    .wc-block-product-filters__overlay-wrapper {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: flex-end !important; /* Притискаємо контент до НИЗУ */
+      height: 100% !important;
+    }
+
+    /* 3. Саме вікно з фільтрами (те саме, що має бути 70%) */
+    .wc-block-product-filters__overlay-dialog {
+      height: 70vh !important; /* vh краще для мобільних, ніж % */
+      max-height: 70vh !important;
+      top: auto !important;    /* Скасовуємо стандартне позиціонування зверху */
+      margin-top: auto !important;
+      
+      /* Додаємо закруглені кути зверху для стилю "шторки" */
+      border-radius: 20px 20px 0 0 !important;
+      overflow-y: auto; /* Щоб фільтри можна було скролити всередині */
+    }
+
+    .wc-block-product-filters__overlay-header {
+      justify-content: center;
+      padding: 1.6rem 0;
+    }
+
+    .wc-block-product-filters__close-overlay svg{
+     display: none;
+    }
+
+    .wc-block-product-filters__close-overlay span {
+      font-size: 0; 
+      line-height: 0;
+    }
+
+    .wc-block-product-filters__close-overlay span::before {
+      content: "";
+      display: inline-block;
+      width: 4.8rem;
+      height: 0.4rem;
+      background-image: url(assets/images/overlay.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 1;
+    }
+
+    .wc-block-product-filters__overlay-content {
+      gap: 4rem;
+      padding: 0 3.2rem;
+    }
+
+    /* 1. Головний контейнер колонок */
+    .wp-block-columns.is-layout-flex {
+      display: flex !important;
+      justify-content: space-between !important; /* Розносить в різні боки */
+      align-items: center !important;     /* Вирівнює заголовок і кнопку по центру вертикально */
+      width: 100% !important;             /* Контейнер на всю ширину, щоб працював space-between */
+      gap: 15px !important;               /* Відступ між колонками, якщо вони зблизяться */
+    }
+
+    /* 2. Колонки всередині (скидаємо їхню стандартну ширину) */
+    .wp-block-columns.is-layout-flex > .wp-block-column {
+      flex: 0 1 auto !important;          /* Не дозволяє колонці розтягуватися, тільки по контенту */
+      width: fit-content !important;      /* Ширина за вмістом */
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    /* 3. Додаткове скидання для блоків WooCommerce всередині */
+    .wp-block-woocommerce-product-filter-active,
+    .wp-block-woocommerce-product-filter-clear-button,
+    .wc-block-product-filter-clear-button {
+      width: fit-content !important;
+      margin: 0 !important;
+    }
+
+    /* 4. Вирівнювання кнопок всередині другої колонки */
+    .wp-block-buttons.is-layout-flex {
+      justify-content: flex-end !important;
+      width: fit-content !important;
+    }
+
+    /* 5. Сама кнопка (про всяк випадок) */
+    .wp-block-button.wc-block-product-filter-clear-button .wp-block-button__link {
+      background-color: transparent;
+      border: none;
+      text-transform: uppercase;
+      font-family: 'Manrope Variable';
+      font-weight: 600;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      letter-spacing: 0.12rem;
+      color: #775A19;
+      width: fit-content !important;
+      display: inline-block !important;
+    }
+
+    .wc-block-product-filters__overlay .wp-block-columns .wp-block-heading {
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+      color: #1B1C15;
+      text-transform: none;
+      margin: 0 !important;
+      padding: 0;
+    }
+
+    .wc-block-product-filters__overlay .wp-block-heading {
+      text-transform: uppercase;
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      letter-spacing: 0.25rem;
+      color: #1B1C15;
+      padding-bottom: 2.3rem;
+      margin: 0 !important;
+    }
+
+    /* СОРТУВАННЯ */
+    .catalog-filter-sort .woocommerce-ordering {
+      display: inline-flex;
+      justify-content: end;
+    }
+
+    .catalog-filter-sort .woocommerce-ordering span {
+      content: 'сортування';
+      text-transform: uppercase;
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      letter-spacing: 0.12rem;
+      color: #1B1C15;
+      margin-right: 2px;
+    }
+
+    .catalog-filter-sort .woocommerce-ordering select {
+      -webkit-appearance: none; /* Для Safari/Chrome */
+      -moz-appearance: none;    /* Для Firefox */
+      appearance: none;         /* Стандарт */
+      background: transparent;
+      padding-right: 10px;
+      outline: none;
+      appearance: none; /* Прибирає системну стрілку */
+      background-image: url('assets/images/arrow.svg'); /* Ваша іконка */
+      background-repeat: no-repeat;
+      background-position: right center;
+      border: none;
+    }
+    .catalog-filter-sort .woocommerce-ordering select,
+    .catalog-filter-sort .woocommerce-ordering select * {
+      text-transform: uppercase;
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      letter-spacing: 0.12rem;
+    }
+
+    /* ПАГІНАЦІЯ */
+
+    .catalog-pagination {
+      margin: 4.4rem 0;
+    }
+
+    .catalog-pagination .pagination {
+      display: flex;
+      justify-content: center;
+    }
+
+    .catalog-pagination .page-numbers {
+      text-transform: uppercase;
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+      color: #4D4635;
+    }
+
+    .catalog-pagination .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+    }
+
+    .catalog-pagination .next,
+    .catalog-pagination .prev {
+      padding: 0 0.8rem;
+      font-family: 'Manrope Variable';
+      font-size: 1rem;
+      line-height: 1.5rem;
+
+    }
+
+    .catalog-pagination .next::after {
+      content: "";
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.7rem;
+      background-image: url(assets/images/arrow-next.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-left: 4px;
+    }
+
+    .catalog-pagination .prev::before {
+      content: "";
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.7rem;
+      background-image: url(assets/images/arrow-prev.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-right: 4px;
+    }
+
+    .catalog-pagination .current {
+      color: #775A19;
+      border-bottom: 1px solid #775A19;
+    }
+
+}
