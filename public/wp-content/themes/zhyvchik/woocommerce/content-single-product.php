@@ -25,52 +25,89 @@ global $product;
  * @hooked woocommerce_output_all_notices - 10
  */
 do_action( 'woocommerce_before_single_product' );
-
-if ( post_password_required() ) {
-	echo get_the_password_form(); // WPCS: XSS ok.
-	return;
-}
+// Додає айді головного зобоаження в масив галереї
+$product_img_id = $product->get_image_id();
+$product_gallery_ids = $product->get_gallery_image_ids();
+array_unshift($product_gallery_ids, (int) $product_img_id);
 ?>
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
 
-	<?php
-	/**
-	 * Hook: woocommerce_before_single_product_summary.
-	 *
-	 * @hooked woocommerce_show_product_sale_flash - 10
-	 * @hooked woocommerce_show_product_images - 20
-	 */
-	do_action( 'woocommerce_before_single_product_summary' );
-	?>
-
-	<div class="summary entry-summary">
-		<?php
-		/**
-		 * Hook: woocommerce_single_product_summary.
-		 *
-		 * @hooked woocommerce_template_single_title - 5
-		 * @hooked woocommerce_template_single_rating - 10
-		 * @hooked woocommerce_template_single_price - 10
-		 * @hooked woocommerce_template_single_excerpt - 20
-		 * @hooked woocommerce_template_single_add_to_cart - 30
-		 * @hooked woocommerce_template_single_meta - 40
-		 * @hooked woocommerce_template_single_sharing - 50
-		 * @hooked WC_Structured_Data::generate_product_data() - 60
-		 */
-		do_action( 'woocommerce_single_product_summary' );
-		?>
+<!-- ХЛІБНІ КРИХТИ -->
+<section class="zhyvchik-breadcrumb">
+	<div class="container">
+		<?php woocommerce_breadcrumb(); ?>
 	</div>
+</section>
 
-	<?php
-	/**
-	 * Hook: woocommerce_after_single_product_summary.
-	 *
-	 * @hooked woocommerce_output_product_data_tabs - 10
-	 * @hooked woocommerce_upsell_display - 15
-	 * @hooked woocommerce_output_related_products - 20
-	 */
-	do_action( 'woocommerce_after_single_product_summary' );
-	?>
-</div>
+<!-- ГАЛЕРЕЯ ТОВАРУ -->
+<section class="zhyvchik-product-gallery">
+	<div class="container">
+		<div class="product-gallery-main-swiper">
+			<ul class="swiper-wrapper">
+				<?php foreach ($product_gallery_ids as $product_gallery_id): ?>
+					<li class="swiper-slide">
+						<div class="img-wrapper">
+							<img src="<?php echo wp_get_attachment_url($product_gallery_id); ?>" alt="">
+						</div>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+		<div class="product-gallery-thumb-swiper">
+			<ul class="swiper-wrapper">
+				<?php foreach ($product_gallery_ids as $product_gallery_id): ?>
+					<li class="swiper-slide">
+						<div class="img-wrapper">
+							<img src="<?php echo wp_get_attachment_url($product_gallery_id); ?>" alt="">
+						</div>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<!-- НАЗВА ТОВАРУ -->
+ <section class="zhyvchik-product-name">
+	<div class="container">
+		<h2>назва товару</h2>
+		<div class="title"><h1>Взірець № <?php echo $product->get_id(); ?> -</h1><?php woocommerce_template_single_title(); ?></div>
+	</div>
+ </section>
+
+<!-- ХАРАКТЕРИСТИКИ -->
+  <section class="zhyvchik-atributes">
+	<div class="container">
+		<div><?php woocommerce_product_additional_information_tab(); ?></div>
+	</div>
+ </section>
+
+<!-- ЦІНА -->
+  <section class="zhyvchik-">
+	<div class="container">
+		<div><?php woocommerce_template_single_price(); ?></div>
+	</div>
+ </section>
+
+<!-- КНОПКИ -->
+  <section class="zhyvchik-">
+	<div class="container">
+		<div><?php woocommerce_template_single_add_to_cart(); ?></div>
+	</div>
+ </section>
+
+<!-- ВІДГУКИ -->
+  <section class="zhyvchik-">
+	<div class="container">
+		<div><?php comments_template(); ?></div>
+	</div>
+ </section>
+
+<!-- ДОПРОДАЖІ -->
+  <section class="zhyvchik-">
+	<div class="container">
+		<div><?php woocommerce_upsell_display(); ?></div>
+	</div>
+ </section>
+
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>

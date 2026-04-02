@@ -963,4 +963,191 @@ ul {
       border-bottom: 1px solid #775A19;
     }
 
+    /* СТОРІНКА ТОВАРУ */
+    /* ХЛІБНІ КРИХТИ */
+    .zhyvchik-breadcrumb {
+      margin: 4.8rem 0;
+    }
+
+    .zhyvchik-breadcrumb .woocommerce-breadcrumb {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .zhyvchik-breadcrumb .woocommerce-breadcrumb,
+    .zhyvchik-breadcrumb .woocommerce-breadcrumb a {
+      text-transform: uppercase;
+      font-family: 'Manrope Variable';
+      font-size: 1rem;
+      line-height: 1.5rem;
+      letter-spacing: 0.2rem;
+    }
+
+    .zhyvchik-breadcrumb .woocommerce-breadcrumb{
+      font-weight: 700;
+      color: #775A19;
+    }
+
+    .zhyvchik-breadcrumb .woocommerce-breadcrumb a {
+      font-weight: 400;
+      color: #7F7663;
+    }
+
+    /* ГАЛЕРЕЯ ТОВАРУ */
+
+    .zhyvchik-product-gallery .product-gallery-main-swiper {
+      margin-bottom: 3.2rem;
+    }
+
+    .zhyvchik-product-gallery .product-gallery-main-swiper .img-wrapper {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4;
+      background-color: #EFEEE3;
+      display: flex;
+      justify-content: center;
+      align-items:  center;
+    }
+
+    .zhyvchik-product-gallery .product-gallery-main-swiper img {
+      aspect-ratio: 1/1;
+      width: 72%;
+      height: auto;
+      object-fit: cover;
+    }    
+
+    .zhyvchik-product-gallery .product-gallery-thumb-swiper .swiper-slide {
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .zhyvchik-product-gallery .product-gallery-thumb-swiper .img-wrapper {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      background-color: #EFEEE3;
+      display: flex;
+      justify-content: center;
+      align-items:  center;
+    }
+
+    .zhyvchik-product-gallery .product-gallery-thumb-swiper img {
+      aspect-ratio: 1/1;
+      width: 69%;
+      height: auto;
+      object-fit: cover;
+    }    
+
+    .zhyvchik-product-gallery .product-gallery-thumb-swiper .swiper-slide-thumb-active {
+      opacity: 1;
+      border: 1px solid rgba(119,90,25,0.3);
+    }
+
+    /* НАЗВА ТОВАРУ */
+    .zhyvchik-product-name {
+      margin: 6.4rem 0 4rem 0;
+      position: relative;
+    }
+
+    .zhyvchik-product-name .container {
+      overflow: visible;
+    }
+
+    .zhyvchik-product-name h2 {
+      text-transform: uppercase;
+      font-family: 'Manrope Variable';
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      letter-spacing: 0.3rem;
+      margin-bottom: 1.6rem;
+      color: #775A19;
+    }
+
+    .zhyvchik-product-name .title {
+      display: inline;
+      height: fit-content;
+    }
+
+    .zhyvchik-product-name .title::after {
+      content: '';
+      position: absolute;
+      bottom: -4rem;
+      left: auto;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(208,197,175,0.2);
+    }
+
+    .zhyvchik-product-name .title * {
+      font-family: 'Noto Serif Variable';
+      font-weight: 300;
+      font-size: 3.6rem;
+      color: #1B1C15;
+      width: fit-content;
+    }
+
+    .zhyvchik-product-name .title .product_title {
+      font-style: italic;
+    }
+
+    /* ХАРАКТЕРИСТИКИ */
+    .zhyvchik-atributes {
+      padding: 2.4rem 0;
+
+    }
+
+      .zhyvchik-atributes .container {
+      overflow: visible;
+    }
+
+    .zhyvchik-atributes h2 {
+      display: none;
+    }
+
+    .zhyvchik-atributes tbody {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3.2rem;
+    }
+
+    .zhyvchik-atributes tbody::after {
+      content: '';
+      position: absolute;
+      bottom: -4rem;
+      left: auto;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(208,197,175,0.2);
+    }
+
+    .zhyvchik-atributes tbody tr {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: fit-content;
+      max-width: 10rem;
+    }
+
+    .zhyvchik-atributes tbody th {
+      text-transform: uppercase;
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      letter-spacing: 0.1rem;
+      margin-bottom: 0.4rem;
+      color: #7F7663;
+    }
+
+    .zhyvchik-atributes tbody td {
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+      color: #1B1C15;
+    }
 }
