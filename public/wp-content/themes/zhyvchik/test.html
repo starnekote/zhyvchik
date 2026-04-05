@@ -11,37 +11,25 @@
 
 <body>
 
-    <section class="zhyvchik-atributes">
-        <div class="container">
-            <div>
-                <h2>Додаткова інформація</h2>
+    <div class="woocommerce-notices-wrapper">
+        <div class="woocommerce-message" role="alert" tabindex="-1">
+            “Beanie” додано до кошика. 
+            <a href="https://zhyvchik/?page_id=8" class="button wc-forward">Переглянути кошик</a> 
+        </div>
+    </div>
 
-                <table class="woocommerce-product-attributes shop_attributes" aria-label="Деталі товару">
-                    <tbody>
-                        <tr
-                            class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_%d0%be%d0%b1%d1%94%d0%bc">
-                            <th class="woocommerce-product-attributes-item__label" scope="row">Об'єм</th>
-                            <td class="woocommerce-product-attributes-item__value">
-                                <p>0,5л</p>
-                            </td>
-                        </tr>
-                        <tr
-                            class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_%d1%80%d1%96%d0%b2%d0%b5%d0%bd%d1%8c-ph">
-                            <th class="woocommerce-product-attributes-item__label" scope="row">Рівень PH</th>
-                            <td class="woocommerce-product-attributes-item__value">
-                                <p>7.4</p>
-                            </td>
-                        </tr>
-                        <tr
-                            class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_%d0%bf%d0%be%d1%85%d0%be%d0%b4%d0%b6%d0%b5%d0%bd%d0%bd%d1%8f">
-                            <th class="woocommerce-product-attributes-item__label" scope="row">Походження</th>
-                            <td class="woocommerce-product-attributes-item__value">
-                                <p>Артезіанські джерела</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <section class="zhyvchik-add-to-cart">
+        <div class="container">
+            <form class="cart" action="https://zhyvchik/?product=beanie" method="post" enctype="multipart/form-data">
+                <div class="quantity zhyvchik-container">
+                    <button class="zhyvchik-change-price-btn" id="toggleBtn">Змінити кількість товару</button>
+                    <input type="number" id="quantity_69d2a50119e8e" class="input-text qty text" name="quantity"
+                        value="1" aria-label="Кількість товару" min="1" step="1" placeholder="" inputmode="numeric"
+                        autocomplete="off">
+                </div>
+                <button type="submit" name="add-to-cart" value="35" class="single_add_to_cart_button button alt">Додати
+                    в кошик</button>
+            </form>
         </div>
     </section>
 

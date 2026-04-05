@@ -82,16 +82,33 @@ array_unshift($product_gallery_ids, (int) $product_img_id);
  </section>
 
 <!-- ЦІНА -->
-  <section class="zhyvchik-">
+  <section class="zhyvchik-product-price">
 	<div class="container">
-		<div><?php woocommerce_template_single_price(); ?></div>
+		<?php woocommerce_template_single_price(); ?>
+		<p><?php 
+				if ($product->is_on_sale()) {
+					$zhyvchikPrice = 'Цей продукт на знижці';
+				} elseif ($product->get_type() === 'variable') {
+					$zhyvchikPrice = 'Ціна товару залежить від варіації';
+				} else {
+					$zhyvchikPrice = '';
+				}
+
+		echo $zhyvchikPrice ?></p>
 	</div>
  </section>
 
 <!-- КНОПКИ -->
-  <section class="zhyvchik-">
+  <section class="zhyvchik-add-to-cart">
 	<div class="container">
-		<div><?php woocommerce_template_single_add_to_cart(); ?></div>
+		<?php woocommerce_template_single_add_to_cart(); ?>	
+	</div>
+ </section>
+
+ <!-- ОПИС ТОВАРУ -->
+ <section class="zhyvchik-description">
+	<div class="container">
+		<?php echo $product->get_description(); ?>	
 	</div>
  </section>
 

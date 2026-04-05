@@ -1096,7 +1096,6 @@ ul {
     /* ХАРАКТЕРИСТИКИ */
     .zhyvchik-atributes {
       padding: 2.4rem 0;
-
     }
 
       .zhyvchik-atributes .container {
@@ -1105,6 +1104,10 @@ ul {
 
     .zhyvchik-atributes h2 {
       display: none;
+    }
+
+    .zhyvchik-atributes table {
+      margin-bottom: 4rem;
     }
 
     .zhyvchik-atributes tbody {
@@ -1150,4 +1153,154 @@ ul {
       line-height: 2.8rem;
       color: #1B1C15;
     }
+
+    /* ЦІНА  */
+
+    .zhyvchik-product-price {
+      margin-bottom: 3.9rem;
+    }
+
+    .zhyvchik-product-price .price {
+      display: flex;
+      align-items: end;
+      margin-bottom: 0.9rem;
+    }
+
+    .zhyvchik-product-price .price del bdi,
+    .zhyvchik-product-price .price del .woocommerce-Price-currencySymbol {
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+      color: #7F7663;
+    }
+
+    .zhyvchik-product-price .price ins bdi,
+    .zhyvchik-product-price .price ins .woocommerce-Price-currencySymbol {
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-size: 3rem;
+      line-height: 3.6rem;
+      color: #1B1C15;
+    }
+    
+    .zhyvchik-product-price .price ins {
+      order: 1;
+      text-decoration: none;
+    }
+
+    .zhyvchik-product-price .price del{
+      order: 2;
+      margin-left: 1.6rem; 
+      text-decoration: underline #7F7663 !important; 
+      text-underline-offset: -0.6rem;
+      text-decoration-skip-ink: none;
+    }
+
+    .zhyvchik-product-price p {
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      color: #7F7663;
+    }
+
+    /* СЕКЦІЯ З КНОПКАМИ */
+    .zhyvchik-add-to-cart {
+      margin-bottom: 3.9rem;
+    }
+
+    .zhyvchik-add-to-cart .cart {
+      display: flex;
+      flex-direction: column-reverse;
+     }
+
+     .zhyvchik-add-to-cart .quantity {
+      display: flex;
+      width: 100%;
+      overflow: hidden;
+     }
+
+    .zhyvchik-add-to-cart .quantity .zhyvchik-change-price-btn {
+      width: 100%;
+    }
+
+    .zhyvchik-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      overflow: hidden; /* Щоб інпут не вилазив, поки він 0 */
+    }
+
+    .zhyvchik-change-price-btn {
+      width: 100%; /* Початкова ширина */
+      flex-shrink: 0;
+      white-space: nowrap; /* Щоб текст не переносився при звуженні */
+      transition: width 0.4s ease; /* Плавність */
+      cursor: pointer;
+      display: block;
+      height: auto;
+      padding: 2rem 0;
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      letter-spacing: 0.14rem;
+      text-transform: uppercase;
+      color: #261900;
+      background-color: #FFDEA5;
+      border: none;
+    }
+
+    .input-text.qty {
+      width: 0%; /* Початково прихований */
+      flex-shrink: 0;
+      padding: 0;
+      border: none;
+      opacity: 0;
+      transition: width 0.4s ease, opacity 0.3s ease;
+    }
+
+    /* Стан, коли поле "виїхало" */
+    .zhyvchik-container.active .zhyvchik-change-price-btn {
+      width: 73%;
+    }
+
+    .zhyvchik-container.active .input-text.qty {
+      width: 22%;
+      opacity: 1;
+      padding: 5px; /* Повертаємо падінги */
+      border: 1px solid #ccc;
+    }
+
+    .zhyvchik-add-to-cart .single_add_to_cart_button {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: auto;
+      padding: 2rem 0;
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      letter-spacing: 0.14rem;
+      text-transform: uppercase;
+      color: #ffffff;
+      background-color: #5F5E5E;
+      border: none;
+      margin-bottom: 1.6rem;
+    }
+
+    .zhyvchik-add-to-cart .single_add_to_cart_button::after {
+      content: "";
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      background-image: url(assets/images/arrow-btn.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-left: 12px;
+      opacity: 1;
+    }
+
 }
