@@ -113,18 +113,15 @@ array_unshift($product_gallery_ids, (int) $product_img_id);
  </section>
 
 <!-- ВІДГУКИ -->
-  <section class="zhyvchik-">
+  <section class="zhyvchik-reviews">
 	<div class="container">
-		<div><?php comments_template(); ?></div>
+		<?php comments_template(); ?>
 	</div>
  </section>
 
 <!-- ДОПРОДАЖІ -->
-  <section class="zhyvchik-">
-	<div class="container">
-		<div><?php woocommerce_upsell_display(); ?></div>
-	</div>
- </section>
+<?php woocommerce_upsell_display(); ?>
+
 
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>

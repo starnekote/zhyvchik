@@ -74,4 +74,8 @@ function custom_remove_sorting_options( $options ) {
     return $options;
 }
 
+add_filter( 'woocommerce_product_upsells_products_heading', function() {
+    return 'З цим товаром також купують';
+});
+
 ?>

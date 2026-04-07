@@ -72,12 +72,11 @@ ul {
       padding: 0.4rem 1.6rem;
     }
 
-    header button {
-      background: none;
-      border: none;
+    header a {
+      display: block;
     }
 
-    header a {
+    header .logo {
       text-align: center;
       display: block;
       font-family: 'Inter Variable';
@@ -86,6 +85,16 @@ ul {
       letter-spacing: 0.4rem;
       line-height: 6.4rem;
       color: #2D2D2D;
+    }
+
+    header .icons {
+      display: inline-flex;
+      gap: 1.6rem;
+    }
+
+    header .icon {
+      width: 2.4rem;
+      height: 2.4rem;
     }
 
     /* КАТЕГОРІЇ */
@@ -1302,5 +1311,198 @@ ul {
       margin-left: 12px;
       opacity: 1;
     }
+
+    /* ОПИС ТОВАРУ */
+    .zhyvchik-description .container {
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 2.28rem;
+      color: #4D4635;
+      margin-bottom: 4.9rem;
+    }
+
+    /* ВІДГУКИ ТОВАРУ */
+
+    .zhyvchik-reviews .woocommerce-Reviews {
+      margin-top: 8rem;
+    }
+
+    .zhyvchik-reviews .woocommerce-Reviews .zhyvchik-reviews-header {
+      margin-bottom: 4rem;
+    }
+
+    .zhyvchik-reviews .woocommerce-Reviews .zhyvchik-reviews-header h2 {
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-style: italic;
+      font-size: 3rem;
+      line-height: 3.6rem;
+      color: #1B1C15;
+      margin-bottom: 0.8rem;
+    }
+
+     .zhyvchik-reviews .woocommerce-Reviews .zhyvchik-reviews-header .zhyvchik-star-rating img {
+      width: 1.1rem;
+      height: 1.1rem;
+     }
+
+     .zhyvchik-reviews .woocommerce-Reviews .zhyvchik-reviews-header .zhyvchik-star-rating span {
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      letter-spacing: 0.12rem;
+      color: #7F7663;
+      text-transform: uppercase;
+      padding-left: 0.8rem;
+     }
+
+     .zhyvchik-reviews .woocommerce-Reviews .zhyvchik-reviews-header a {
+      display: block;
+      position: relative;
+      font-family: 'Manrope Variable';
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      letter-spacing: 0.2rem;
+      color: #1B1C15;
+      text-transform: uppercase;
+      padding-bottom: 0.4rem;
+     }
+
+     .zhyvchik-reviews .woocommerce-Reviews .zhyvchik-reviews-header a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #775A19;
+     }
+
+    .zhyvchik-reviews .woocommerce-Reviews .commentlist {
+      width: 100%;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4.8rem;
+      padding: 6.4rem 0;
+    }
+
+    .zhyvchik-reviews .woocommerce-Reviews .commentlist .comment {
+      width: 100%;
+    }
+
+    .zhyvchik-reviews .woocommerce-Reviews .commentlist .comment_container {
+      width: 100%;
+      height: auto;
+      padding: 4rem;
+      background-color: #F5F4E8;
+      box-sizing: border-box;
+    }
+
+     .zhyvchik-reviews .woocommerce-Reviews .commentlist .comment_container .comment-text {
+      position: relative;
+     }
+
+    .zhyvchik-reviews .woocommerce-Reviews .commentlist .comment_container .avatar,
+    .zhyvchik-reviews .woocommerce-Reviews .commentlist .comment_container .woocommerce-review__dash {
+      display: none;
+    }
+
+    .zhyvchik-reviews .woocommerce-Reviews .commentlist .comment_container .meta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .zhyvchik-reviews .woocommerce-Reviews .commentlist .comment_container .custom-star-rating {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      top: 0%;
+      left: 83%;
+    }
+
+    .zhyvchik-reviews .woocommerce-Reviews .commentlist .comment_container .custom-star-rating .star-icon {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .zhyvchik-reviews .woocommerce-Reviews .commentlist .comment_container strong {
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 2.8rem;
+      color: #1B1C15;
+      padding-bottom: 0.4rem;
+    }
+
+    .zhyvchik-reviews .woocommerce-Reviews .commentlist .comment_container time {
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      letter-spacing: 0.1rem;
+      color: #7F7663;
+      text-transform: uppercase;
+      padding-bottom: 2.3rem;
+    }
+
+    .zhyvchik-reviews .woocommerce-Reviews .commentlist .comment_container .description p {
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 3rem;
+      color: #4D4635;
+      padding-bottom: 0.4rem;
+      font-style: italic;
+    }
+
+    .zhyvchik-reviews .woocommerce-Reviews .commentlist .comment_container .description p::before,
+     .zhyvchik-reviews .woocommerce-Reviews .commentlist .comment_container .description p::after {
+      content: '"';
+     }
+
+     .woocommerce-verification-required {
+      display: block;
+      padding: 4.8rem;
+      box-sizing: border-box;
+      background-color: #ffffff;
+      border: 1px solid rgba(208, 197, 175, 0.2);
+      color: #7F7663;
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 2rem;
+     }
+
+     /* СЕКЦІЯ З ДОПРОДАЖАМИ */
+    .up-sells {
+      margin: 8rem 0;
+    }
+
+     .up-sells .container > h2 {
+      font-family: 'Manrope Variable';
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      letter-spacing: 0.4rem;
+      color: #775A19;
+      text-transform: uppercase;
+      padding-bottom: 0.85rem;
+      text-align: center;
+     }
+
+     .up-sells .container > h1 {
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-size: 3.6rem;
+      line-height: 4rem;
+      color: #1B1C15;
+      padding-bottom: 4.8rem;
+      text-align: center;
+     }
 
 }

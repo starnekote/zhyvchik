@@ -26,18 +26,48 @@ if ( ! comments_open() ) {
 ?>
 <div id="reviews" class="woocommerce-Reviews">
 	<div id="comments">
-		<h2 class="woocommerce-Reviews-title">
-			<?php
-			$count = $product->get_review_count();
-			if ( $count && wc_review_ratings_enabled() ) {
-				/* translators: 1: reviews count 2: product name */
-				$reviews_title = sprintf( esc_html( _n( '%1$s review for %2$s', '%1$s reviews for %2$s', $count, 'woocommerce' ) ), esc_html( $count ), '<span>' . get_the_title() . '</span>' );
-				echo apply_filters( 'woocommerce_reviews_title', $reviews_title, $count, $product ); // WPCS: XSS ok.
-			} else {
-				esc_html_e( 'Reviews', 'woocommerce' );
-			}
-			?>
-		</h2>
+		<div class="zhyvchik-reviews-header">
+			<h2>Досвід покупців</h2>
+				<?php
+					global $product;
+
+					if ( ! $product ) {
+						return;
+					}
+
+					// Отримуємо середній рейтинг
+					$average_rating = $product->get_average_rating();
+					$rounded_rating = (int) round($average_rating);
+					$count = $product->get_review_count();
+					
+					if ($count === 1) {
+						$review_text = 'Відгук';
+					} elseif ($count === 2 | $count === 3 | $count === 4) {
+						$review_text = 'Відгуки';
+					} else {
+						$review_text = 'Відгуків';
+					}
+
+					// Отримуємо базовий URL вашої теми
+					// Наприклад, картинки лежать у папці: wp-content/themes/vasha-tema/assets/images/
+					$theme_url = get_template_directory_uri();
+
+					$full_star_url  = $theme_url . '/assets/images/star-full.svg';
+					$empty_star_url = $theme_url . '/assets/images/star-empty.svg';
+
+					echo '<div class="zhyvchik-star-rating" title="Рейтинг: ' . esc_attr($average_rating) . '">';
+
+					for ($i = 1; $i <= 5; $i++) {
+						$icon_url = ($i <= $rounded_rating) ? $full_star_url : $empty_star_url;
+						
+						echo '<img src="' . esc_url($icon_url) . '" alt="star" class="star-icon">';
+					}
+
+					echo '<span>'. esc_attr($average_rating) . ' / 5.0 (' .esc_attr($count) .' '. esc_attr($review_text) . ')</span></div>';
+				?>
+
+			<a class='zhyvchik-comment-link' href="#zhyvchik-review">написати відгук</a>
+		</div>
 
 		<?php if ( have_comments() ) : ?>
 			<ol class="commentlist">
@@ -67,6 +97,8 @@ if ( ! comments_open() ) {
 
 	<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
 		<div id="review_form_wrapper">
+			<h1>Поділіться Вашим досвідом</h1>
+			<h2>Ваші враження наше натхнення</h2>
 			<div id="review_form">
 				<?php
 				$commenter    = wp_get_current_commenter();
@@ -140,7 +172,7 @@ if ( ! comments_open() ) {
 			</div>
 		</div>
 	<?php else : ?>
-		<p class="woocommerce-verification-required"><?php esc_html_e( 'Only logged in customers who have purchased this product may leave a review.', 'woocommerce' ); ?></p>
+		<p class="woocommerce-verification-required" id="zhyvchik-review"><?php esc_html_e( 'Only logged in customers who have purchased this product may leave a review.', 'woocommerce' ); ?></p>
 	<?php endif; ?>
 
 	<div class="clear"></div>
