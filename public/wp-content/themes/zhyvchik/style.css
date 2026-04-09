@@ -1261,7 +1261,7 @@ ul {
       border: none;
     }
 
-    .input-text.qty {
+    .zhyvchik-container .input-text.qty {
       width: 0%; /* Початково прихований */
       flex-shrink: 0;
       padding: 0;
