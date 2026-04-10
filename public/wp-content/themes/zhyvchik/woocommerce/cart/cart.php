@@ -16,8 +16,12 @@
  */
 
 defined( 'ABSPATH' ) || exit;
-
-
+?>
+<section class="zhyvchik-cart-products">
+	<div class="container">
+		<h2>обрані товари</h2>
+		<h1>Ваш кошик</h1>
+<?php
 
 do_action( 'woocommerce_before_cart' ); ?>
 
@@ -26,7 +30,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 	<?php do_action( 'woocommerce_before_cart_table' ); ?>
 	
 	<table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
-		<!-- <thead>
+		<thead>
 			<tr>
 				<th class="product-remove"><span class="screen-reader-text"><?php esc_html_e( 'Remove item', 'woocommerce' ); ?></span></th>
 				<th class="product-thumbnail"><span class="screen-reader-text"><?php esc_html_e( 'Thumbnail image', 'woocommerce' ); ?></span></th>
@@ -35,7 +39,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				<th scope="col" class="product-quantity"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
 				<th scope="col" class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
 			</tr>
-		</thead> -->
+		</thead>
 		<tbody>
 			<?php do_action( 'woocommerce_before_cart_contents' ); ?>
 
@@ -101,6 +105,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						</td>
 
 						<td scope="row" role="rowheader" class="product-name" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">
+						<h1>Взірець № <?php echo $_product->get_id(); ?> -</h1>
 						<?php
 						if ( ! $product_permalink ) {
 							echo wp_kses_post( $product_name . '&nbsp;' );
@@ -188,19 +193,25 @@ do_action( 'woocommerce_before_cart' ); ?>
 	</table>
 	<?php do_action( 'woocommerce_after_cart_table' ); ?>
 </form>
+</div>
+</section>
 
 <?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
 
-<div class="cart-collaterals">
-	<?php
-		/**
-		 * Cart collaterals hook.
-		 *
-		 * @hooked woocommerce_cross_sell_display
-		 * @hooked woocommerce_cart_totals - 10
-		 */
-		do_action( 'woocommerce_cart_collaterals' );
-	?>
-</div>
+<section class="zhyvchik-cart-total">
+	<div class="container">
+		<div class="cart-collaterals">
+			<?php
+				/**
+				 * Cart collaterals hook.
+				 *
+				 * @hooked woocommerce_cross_sell_display
+				 * @hooked woocommerce_cart_totals - 10
+				 */
+				do_action( 'woocommerce_cart_collaterals' );
+			?>
+		</div>
+	</div>
+</section>
 
 <?php do_action( 'woocommerce_after_cart' ); ?>

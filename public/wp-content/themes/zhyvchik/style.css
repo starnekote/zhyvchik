@@ -1505,4 +1505,67 @@ ul {
       text-align: center;
      }
 
+     /* КОШИК */
+     .zhyvchik-cart-products .container > h2 {
+      font-family: 'Manrope Variable';
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      letter-spacing: 0.4rem;
+      color: #775A19;
+      text-transform: uppercase;
+      padding-bottom: 0.85rem;
+      text-align: center;
+     }
+
+     .zhyvchik-cart-products .container > h1 {
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-size: 3.6rem;
+      line-height: 4rem;
+      color: #1B1C15;
+      padding-bottom: 4.8rem;
+      text-align: center;
+     }
+
+     .zhyvchik-cart-products .shop_table {
+      width: 100%;
+     }
+
+     .zhyvchik-cart-products .shop_table tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+     }
+
+     .zhyvchik-cart-products .shop_table * {
+      display: block;
+     }
+
+     .zhyvchik-cart-products .shop_table .cart_item {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-gap: 2rem
+     }
+
+     .zhyvchik-cart-products .product-thumbnail {
+      width: 33%;
+     }
+
+     .zhyvchik-cart-products .product-thumbnail a {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #F5F4E8;
+     }
+
+     .zhyvchik-cart-products .product-thumbnail a img {
+      width: 58%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+     }
 }
