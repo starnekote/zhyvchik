@@ -8,29 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// ФУНКЦІЯ ЩО ОНОВЛЮЄ ПРОМІЖНУ ЦІНУ ТОВАРУ ПІСЛЯ ЗМІНИ КІЛЬКОСТІ
-jQuery(function ($) {
-
-    // При зміні кількості
-    $(document).on('change', 'input.qty', function () {
-
-        const $form = $(this).closest('form.woocommerce-cart-form');
-        const $updateBtn = $form.find('button[name="update_cart"]');
-
-        // Розблокувати кнопку (Woo її часто disable-ить)
-        $updateBtn.prop('disabled', false);
-
-        // Тригер стандартного submit
-        $updateBtn.trigger('click');
-    });
-
-});
-
-// ФУНКЦІЯ ЩО ДОДАЄ КАСТОМНІ СТРІЛКИ ДЛЯ ЗМІНИ КІЛЬКОСТІ ТОВАРУ
-document.addEventListener('DOMContentLoaded', function () {
-
+// Виносимо логіку створення кнопок в окрему функцію
+function initQuantityButtons() {
     document.querySelectorAll('.woocommerce-cart-form input.qty').forEach(function (input) {
-
+        // Запобігаємо повторному додаванню кнопок
         if (input.parentElement.classList.contains('qty-wrap')) return;
 
         const wrap = document.createElement('div');
@@ -39,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const minus = document.createElement('button');
         minus.type = 'button';
         minus.textContent = '-';
-
+        
         const plus = document.createElement('button');
         plus.type = 'button';
         plus.textContent = '+';
@@ -68,7 +49,29 @@ document.addEventListener('DOMContentLoaded', function () {
                 input.dispatchEvent(new Event('change', { bubbles: true }));
             }
         });
+    });
+}
 
+// 1. Викликаємо при завантаженні сторінки
+document.addEventListener('DOMContentLoaded', initQuantityButtons);
+
+jQuery(function ($) {
+    // 2. Викликаємо ПІСЛЯ того, як WooCommerce оновив фрагменти кошика через AJAX
+    $(document.body).on('updated_wc_div', function() {
+        initQuantityButtons();
     });
 
+    // Ваш код для авто-оновлення при зміні кількості
+    $(document).on('change', 'input.qty', function () {
+        // Додаємо невеличку затримку (debounce), щоб уникнути спаму запитами, 
+        // якщо користувач швидко клікає кілька разів поспіль
+        clearTimeout(window.wc_cart_update_timeout);
+        
+        const $form = $(this).closest('form.woocommerce-cart-form');
+        const $updateBtn = $form.find('button[name="update_cart"]');
+        
+        window.wc_cart_update_timeout = setTimeout(function() {
+            $updateBtn.prop('disabled', false).trigger('click');
+        }, 300); // 300 мілісекунд затримки
+    });
 });

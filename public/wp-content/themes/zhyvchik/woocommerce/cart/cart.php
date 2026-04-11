@@ -62,22 +62,6 @@ do_action( 'woocommerce_before_cart' ); ?>
 					?>
 					<tr class="woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 
-						<td class="product-remove">
-							<?php
-								echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-									'woocommerce_cart_item_remove_link',
-									sprintf(
-										'<a role="button" href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
-										esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
-										/* translators: %s is the product name */
-										esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
-										esc_attr( $product_id ),
-										esc_attr( $_product->get_sku() )
-									),
-									$cart_item_key
-								);
-							?>
-						</td>
 
 						<td class="product-thumbnail">
 						<?php
@@ -102,6 +86,23 @@ do_action( 'woocommerce_before_cart' ); ?>
 							printf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $thumbnail ); // PHPCS: XSS ok.
 						}
 						?>
+						</td>
+
+						<td class="product-remove">
+							<?php
+								echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									'woocommerce_cart_item_remove_link',
+									sprintf(
+										'<a role="button" href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
+										esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
+										/* translators: %s is the product name */
+										esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
+										esc_attr( $product_id ),
+										esc_attr( $_product->get_sku() )
+									),
+									$cart_item_key
+								);
+							?>
 						</td>
 
 						<td scope="row" role="rowheader" class="product-name" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">
@@ -170,12 +171,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 			<?php do_action( 'woocommerce_cart_contents' ); ?>
 
+			
 			<tr>
+				
 				<td colspan="6" class="actions">
-
+				<h1 class="zhyvchik-cart-collaterals-title">Підсумки кошика</h1>
 					<?php if ( wc_coupons_enabled() ) { ?>
 						<div class="coupon">
-							<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
+							<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label><p>купон</p> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply', 'woocommerce' ); ?></button>
 							<?php do_action( 'woocommerce_cart_coupon' ); ?>
 						</div>
 					<?php } ?>
@@ -193,13 +196,9 @@ do_action( 'woocommerce_before_cart' ); ?>
 	</table>
 	<?php do_action( 'woocommerce_after_cart_table' ); ?>
 </form>
-</div>
-</section>
 
 <?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
 
-<section class="zhyvchik-cart-total">
-	<div class="container">
 		<div class="cart-collaterals">
 			<?php
 				/**

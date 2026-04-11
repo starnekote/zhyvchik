@@ -22,7 +22,6 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-	<h2><?php esc_html_e( 'Cart totals', 'woocommerce' ); ?></h2>
 
 	<table cellspacing="0" class="shop_table shop_table_responsive">
 
@@ -49,7 +48,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php elseif ( WC()->cart->needs_shipping() && 'yes' === get_option( 'woocommerce_enable_shipping_calc' ) ) : ?>
 
 			<tr class="shipping">
-				<th><?php esc_html_e( 'Shipping', 'woocommerce' ); ?></th>
+				<th>Доставка</th>
 				<td data-title="<?php esc_attr_e( 'Shipping', 'woocommerce' ); ?>"><?php woocommerce_shipping_calculator(); ?></td>
 			</tr>
 

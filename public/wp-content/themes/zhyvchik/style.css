@@ -1282,9 +1282,11 @@ ul {
       border: 1px solid #ccc;
     }
 
-    .zhyvchik-add-to-cart .single_add_to_cart_button {
+    .zhyvchik-add-to-cart .single_add_to_cart_button,
+    .zhyvchik-cart-products .checkout-button {
       position: relative;
       display: block;
+      text-align: center;
       width: 100%;
       height: auto;
       padding: 2rem 0;
@@ -1300,7 +1302,8 @@ ul {
       margin-bottom: 1.6rem;
     }
 
-    .zhyvchik-add-to-cart .single_add_to_cart_button::after {
+    .zhyvchik-add-to-cart .single_add_to_cart_button::after,
+    .zhyvchik-cart-products .checkout-button::after{
       content: "";
       display: inline-block;
       width: 1rem;
@@ -1528,8 +1531,18 @@ ul {
       text-align: center;
      }
 
-     .zhyvchik-cart-products .shop_table {
+    .zhyvchik-cart-products .shop_table {
       width: 100%;
+     }
+
+    .zhyvchik-cart-products .shop_table * {
+      display: block;
+     }
+
+    .zhyvchik-cart-products .shop_table thead {
+      position: absolute;
+      top: 9999px;
+      left: 9999px;
      }
 
      .zhyvchik-cart-products .shop_table tbody {
@@ -1538,21 +1551,35 @@ ul {
         gap: 5rem;
      }
 
-     .zhyvchik-cart-products .shop_table * {
-      display: block;
-     }
-
      .zhyvchik-cart-products .shop_table .cart_item {
       display: grid;
-      grid-template-columns: 1fr 2fr;
-      grid-gap: 2rem
+      grid-template-columns: 1.2fr 1fr 0.8fr;
+      grid-template-rows: 1fr 2fr 3fr;
+      column-gap: 2rem;
+      position: relative;
      }
 
+     .zhyvchik-cart-products .shop_table .cart_item::after {
+      content: '';
+      position: absolute;
+      bottom: -2.5rem;
+      left: auto;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(208,197,175,0.2);
+     }
+
+     .zhyvchik-cart-products .shop_table .cart_item:not(:has(+ .cart_item))::after {
+      display: none;
+    }
+
+     /* ЗОБРАЖЕННЯ ТОВАРУ */
      .zhyvchik-cart-products .product-thumbnail {
-      width: 33%;
+      grid-row-start: 1;
+      grid-row-end: 4;
      }
 
-     .zhyvchik-cart-products .product-thumbnail a {
+    .zhyvchik-cart-products .product-thumbnail a {
       width: 100%;
       height: auto;
       aspect-ratio: 3 / 4;
@@ -1568,4 +1595,252 @@ ul {
       aspect-ratio: 1 / 1;
       object-fit: contain;
      }
+
+     /* ХРЕСТИК ДЛЯ СКАСУВАННЯ ТОВАРУ */
+     .zhyvchik-cart-products .product-remove {
+      grid-column-start: 2;
+      grid-column-end: 4;
+      justify-self: end;
+     }
+
+     .zhyvchik-cart-products .product-remove a {
+      font-size: 3rem;
+      line-height: 2rem;
+      color: rgba(95,94,94,0.4);
+     }
+
+     /* НАЗВА ТОВАРУ */
+
+     .zhyvchik-cart-products .product-name {
+      grid-column-start: 2;
+      grid-column-end: 4;
+     }
+
+     .zhyvchik-cart-products .product-name h1 {
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+      color: #1B1C15;
+     }
+
+     .zhyvchik-cart-products .product-name a {
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      color: rgba(95,94,94,0.4);
+     }
+
+     /* КІЛЬКІСТЬ І ПРОМІЖНА ЦІНА ТОВАРУ */
+
+     .zhyvchik-cart-products .product-quantity,
+     .zhyvchik-cart-products .product-subtotal {
+      align-self: center;
+     }
+
+    .zhyvchik-cart-products .qty-wrap {
+      display: inline-flex;
+      padding-bottom: 0.8rem;
+      border-bottom: rgba(208,197,175,0.3) 1px solid;
+    }
+
+    .zhyvchik-cart-products .qty-wrap * {
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
+
+    .zhyvchik-cart-products .qty-wrap input {
+      width: 1.6rem;
+      border: none;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .zhyvchik-cart-products .qty-wrap button {
+      border: none;
+      background-color: #ffffff;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .zhyvchik-cart-products .product-subtotal bdi {
+      display: inline-flex;
+    }
+
+    .zhyvchik-cart-products .product-subtotal * {
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 2.8rem;
+      color: #1B1C15;
+    }
+    
+
+    /* ПІДСУМКИ КОШИКА */
+    .zhyvchik-cart-products {
+      margin-bottom: 6.4rem;
+    }
+
+  .zhyvchik-cart-products .actions {
+    box-sizing: border-box;
+    padding: 3.2rem 3.2rem 0 3.2rem;
+    background-color: #F5F4E8;
+  }
+
+  .zhyvchik-cart-products .cart-collaterals {
+    box-sizing: border-box;
+    padding: 4.1rem 3.2rem 3.2rem 3.2rem;
+    background-color: #F5F4E8;
+  }
+
+  .zhyvchik-cart-products button[name="update_cart"] {
+    display: none;
+  }
+
+  .zhyvchik-cart-products .zhyvchik-cart-collaterals-title {
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-size: 3rem;
+      line-height: 3.6rem;
+      color: #1B1C15;
+      padding-bottom: 3.2rem;
+  }
+
+  .zhyvchik-cart-products .coupon {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .zhyvchik-cart-products .coupon::after {
+      content: '';
+      position: absolute;
+      bottom: -0.9rem;
+      left: auto;
+      width: 100%;
+      height: 1px;
+      background-color: #D0C5AF;
+  }
+
+  .zhyvchik-cart-products .coupon p {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+      color: rgba(95,94,94,0.6);
+  }
+
+  .zhyvchik-cart-products .coupon input {
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: auto;
+      letter-spacing: 0.1rem;
+      color: #D0C5AF;
+      border: none;
+      background-color: transparent;
+  }
+
+  .zhyvchik-cart-products .coupon button {
+      font-family: 'Manrope Variable';
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      letter-spacing: 0.12rem;
+      color: #775A19;
+      text-transform: uppercase;
+      border: none;
+      background-color: transparent;
+  }
+
+.zhyvchik-cart-products .cart_totals table * {
+  display: block;
+  padding: 0;
+} 
+
+.zhyvchik-cart-products .cart_totals table tr {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  padding-top: 1.6rem;
+}
+
+.zhyvchik-cart-products .cart_totals table bdi {
+  display: inline-flex;
+}
+
+.zhyvchik-cart-products .cart_totals table td {
+ max-width: 50%;
+} 
+
+.zhyvchik-cart-products .cart_totals table .cart-subtotal th,
+.zhyvchik-cart-products .cart_totals table .woocommerce-shipping-totals th {
+  font-family: 'Manrope Variable';
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: rgba(95,94,94,0.6);
+}
+
+.zhyvchik-cart-products .cart_totals table .cart-subtotal td * {
+  font-family: 'Manrope Variable';
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: #1B1C15;
+}
+
+.zhyvchik-cart-products .cart_totals table .woocommerce-shipping-totals td {
+  text-align: right;
+  font-family: 'Manrope Variable';
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1rem;
+  color: rgba(95,94,94,0.4);
+}
+
+.zhyvchik-cart-products .cart_totals table .order-total {
+  padding: 3.2rem 0 4.8rem 0;
+  position: relative;
+}
+
+.zhyvchik-cart-products .cart_totals table .order-total::before {
+  content: '';
+  position: absolute;
+  top: 1.6rem;
+  left: auto;
+  width: 100%;
+  height: 1px;
+  background-color: #D0C5AF;
+}
+
+.zhyvchik-cart-products .cart_totals table .order-total th {
+  font-family: 'Noto Serif Variable';
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.8rem;
+  line-height: 3.2rem;
+  color: #1B1C15;
+}
+
+.zhyvchik-cart-products .cart_totals table .order-total td * {
+  font-family: 'Noto Serif Variable';
+  font-weight: 400;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  color: #1B1C15;
+}
+
 }
