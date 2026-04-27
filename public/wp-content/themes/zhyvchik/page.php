@@ -4,9 +4,9 @@ get_header();
 if ( have_posts() ) :
     while ( have_posts() ) : the_post();
         ?>
-        <div class="page-container">
-            <h1><?php the_title(); ?></h1>
-            <div class="entry-content">
+        <div class="zhyvchik-<?php echo $post->post_name; ?>">
+            <div class="container">
+                <h1><?php the_title(); ?></h1>
                 <?php the_content(); ?>
             </div>
         </div>

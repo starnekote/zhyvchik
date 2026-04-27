@@ -54,6 +54,10 @@ Description: Опис твоєї нової теми
     text-decoration: none;
 }
 
+body {
+  background-color: #FBFAEE;
+}
+
 ul {
       list-style: none;
       padding: 0;
@@ -1842,5 +1846,264 @@ ul {
   line-height: 3.2rem;
   color: #1B1C15;
 }
+
+
+/* СТОРІНКА ОФОРМЛЕННЯ ЗАМОВЛЕННЯ */
+.zhyvchik-checkout .zhyvchik-back-to-cart {
+  font-family: 'Manrope Variable';
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  letter-spacing: 0.4rem;
+  color: #4D4635;
+  }
+
+.zhyvchik-checkout .zhyvchik-back-to-cart::before{
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-image: url(assets/images/back-to-cart-btn.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 16px;
+  opacity: 1;
+}
+
+.zhyvchik-checkout .container > h1 {
+  font-family: 'Noto Serif Variable';
+  font-weight: 400;
+  font-style: italic;
+  font-size: 4.8rem;
+  line-height: 6rem;
+  color: #1B1C15;
+  padding: 2.3rem 0;
+  text-align: center;
+  }
+/* Приховуємо непотрібні поля в чекауті WooCommerce */
+
+#billing_country_field,
+#billing_email_field,
+#ship-to-different-address,
+#order_comments_field {
+    display: none !important;
+}
+
+.zhyvchik-checkout .woocommerce-billing-fields {
+  margin: 2.2rem 0 2.9rem 0;
+}
+
+.zhyvchik-checkout .woocommerce-billing-fields h3,
+.zhyvchik-checkout .col-2::first-line {
+  font-family: 'Noto Serif Variable';
+  font-weight: 400;
+  font-style: italic;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  color: #1B1C15;
+}
+
+.zhyvchik-checkout .woocommerce-billing-fields .woocommerce-billing-fields__field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.zhyvchik-checkout .form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.zhyvchik-checkout .form-row label {
+  font-family: 'Manrope Variable';
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.1rem;
+  color: #4D4635;
+  text-transform: uppercase;
+}
+
+.zhyvchik-checkout .form-row input{
+  width: 100%;
+  height: 5rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #E4E3D7;
+  padding: 0;
+}
+
+.zhyvchik-checkout .form-row input::placeholder {
+  font-family: 'Manrope Variable';
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: auto;
+  color: rgba(208,197,175,0.5);
+}
+
+/* 1. Прибираємо стандартні маркери списку та робимо сітку (опціонально) */
+.zhyvchik-checkout ul.woocommerce-shipping-methods {
+    list-style: none !important;
+    padding: 0;
+    margin: 3.2rem 0;
+    display: flex; /* Вишикує кнопки в ряд. Замініть на display: block, якщо потрібні одна під одною */
+    gap: 0.8rem;     /* Відстань між кнопками */
+    flex-wrap: wrap;
+}
+
+.zhyvchik-checkout ul.woocommerce-shipping-methods li {
+    margin: 0;
+    flex: 1; /* Робить кнопки однакової ширини */
+}
+
+
+/* 2. Ховаємо самі радіо-кнопки */
+/* Ми не використовуємо display: none, щоб не зламати логіку форми і доступність */
+.zhyvchik-checkout .woocommerce-shipping-methods input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 3. Базові стилі для "кнопок" (стилізуємо сам текст label) */
+.zhyvchik-checkout .woocommerce-shipping-methods input[type="radio"] + label {
+    display: block;
+    padding: 8px 0;
+    border: 1px solid rgba(208, 197, 175, 0.3);
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+    color: #4D4635;
+    font-family: 'Manrope Variable';
+    font-weight: 500;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    user-select: none; /* Забороняє виділення тексту при швидкому кліку */
+}
+
+
+/* 5. Стилі для АКТИВНОГО (обраного) елемента */
+.zhyvchik-checkout .woocommerce-shipping-methods input[type="radio"]:checked + label {
+    border-color: #775A19;     /* Головний колір (наприклад, синій) */
+    background-color: rgba(119,90,25,0.05); /* Легкий фон */
+    color: #775A19;            /* Колір тексту */
+    box-shadow: 0 2px 5px rgba(119,90,25,0.05); /* Легка тінь для акценту */
+}
+
+.zhyvchik-checkout .woocommerce-additional-fields {
+  background-color: #F5F4E8;
+  box-sizing: border-box;
+  padding: 2.4rem;
+  border-radius: 8px;
+}
+
+/* 1. Налаштовуємо контейнер: колонка і відстань 3.2rem */
+.zhyvchik-checkout .mrkv_ua_shipping_checkout_fields > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+/* 2. Прибираємо поля, які плагін ховає скриптом (наприклад, По-батькові) */
+.zhyvchik-checkout .mrkv_ua_shipping_checkout_fields > div p.form-row[style*="display: none"] {
+    display: none !important;
+}
+
+/* 3. ГОЛОВНИЙ СЕКРЕТ: Ховаємо параграфи-"привиди" */
+/* Сучасний CSS: якщо в параграфі немає тегу <label>, значить це технічне приховане поле. Ховаємо його повністю! */
+.zhyvchik-checkout .mrkv_ua_shipping_checkout_fields > div p.form-row:not(:has(label)) {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 1. Стилізуємо головний контейнер (замість самого select) */
+.woocommerce-checkout span.select2-selection.select2-selection--single {
+    width: 100% !important;
+    height: 5rem !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #E4E3D7 !important;
+    border-radius: 0 !important; /* Прибираємо стандартне закруглення Select2 */
+    padding: 0 !important;
+    
+    /* Додаємо flex, щоб текст був рівно по центру цих 5rem */
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* 2. Прибираємо стандартні внутрішні відступи Select2 для тексту */
+.woocommerce-checkout .select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    line-height: normal !important;
+    
+    /* Задаємо шрифт також і для обраного значення, щоб він збігався з плейсхолдером */
+    font-family: 'Manrope Variable', sans-serif;
+    font-size: 1.6rem;
+}
+
+/* 3. Стилізуємо плейсхолдер */
+.woocommerce-checkout .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    font-family: 'Manrope Variable', sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: rgba(208, 197, 175, 0.5);
+}
+
+/* 4. Центруємо стрілочку (іконку випадаючого списку) відповідно до нової висоти 5rem */
+.woocommerce-checkout .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 5rem !important;
+    right: 0 !important;
+}
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table {
+ display: block;
+ background-color: #F5F4E8;
+ box-sizing: border-box;
+ padding: 2.4rem;
+ border-radius: 8px;
+ margin: 2.5rem 0;
+}
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table tbody,
+.zhyvchik-checkout .woocommerce-checkout-review-order-table tfoot {
+  display: flex;
+  flex-direction: column;
+}
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table thead .product-name {
+  font-family: 'Noto Serif Variable';
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 2.8rem;
+  color: #1B1C15;
+  padding-bottom: 2.4rem;
+}
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table .cart_item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table .cart_item .product-img {
+  width: 22%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table .cart_item .product-img img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+
 
 }

@@ -73,7 +73,6 @@ function custom_svg_star_rating_html( $html, $rating, $count ) {
     return $custom_html;
 }
 
-
 remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
 add_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
 
@@ -81,4 +80,6 @@ add_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_rating
 remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 add_action('woocommerce_before_shop_loop', 'woocommerce_add_filter', 20 );
+
+remove_action('woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 ?>

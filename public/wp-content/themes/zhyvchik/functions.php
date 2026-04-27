@@ -74,4 +74,43 @@ function custom_remove_sorting_options( $options ) {
     return $options;
 }
 
+add_filter( 'woocommerce_billing_fields', 'make_billing_fields_optional', 9999 );
+
+function make_billing_fields_optional( $fields ) {
+    // Список полів, які ми робимо необов'язковими
+    $not_required_fields = array(
+        'billing_company', 
+        'billing_country', 
+        'billing_address_1',
+        'billing_address_2', 
+        'billing_city', 
+        'billing_state',
+        'billing_postcode', 
+        'billing_email'
+    );
+
+    foreach ( $not_required_fields as $field ) {
+        if ( isset( $fields[ $field ] ) ) {
+            $fields[ $field ]['required'] = false;
+        }
+    }
+
+    return $fields;
+}
+
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields_placeholders', 9999 );
+
+function custom_override_checkout_fields_placeholders( $fields ) {
+    // Плейсхолдер для імені
+    $fields['billing']['billing_first_name']['placeholder'] = 'Ваше ім’я';
+    
+    // Плейсхолдер для прізвища
+    $fields['billing']['billing_last_name']['placeholder'] = 'Ваше прізвище';
+    
+    // Плейсхолдер для телефону
+    $fields['billing']['billing_phone']['placeholder'] = '+380';
+
+    return $fields;
+}
+
 ?>
