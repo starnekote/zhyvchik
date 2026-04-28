@@ -2073,6 +2073,10 @@ ul {
   flex-direction: column;
 }
 
+.zhyvchik-checkout .woocommerce-checkout-review-order-table tbody {
+  gap: 2.4rem;
+}
+
 .zhyvchik-checkout .woocommerce-checkout-review-order-table thead .product-name {
   font-family: 'Noto Serif Variable';
   font-weight: 400;
@@ -2094,7 +2098,7 @@ ul {
   aspect-ratio: 3 / 4;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .zhyvchik-checkout .woocommerce-checkout-review-order-table .cart_item .product-img img {
@@ -2104,6 +2108,33 @@ ul {
   object-fit: contain;
 }
 
+.zhyvchik-checkout .woocommerce-checkout-review-order-table .cart_item .product-name {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-family: 'Manrope Variable';
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: #1B1C15;
+}
 
+.zhyvchik-checkout .woocommerce-checkout-review-order-table .cart_item .product-name strong {
+  font-family: 'Manrope Variable';
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: #4D4635;
+}
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table .cart_item .product-total {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: 'Manrope Variable';
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #1B1C15;
+}
 
 }
