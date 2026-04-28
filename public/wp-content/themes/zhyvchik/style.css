@@ -1287,7 +1287,8 @@ ul {
     }
 
     .zhyvchik-add-to-cart .single_add_to_cart_button,
-    .zhyvchik-cart-products .checkout-button {
+    .zhyvchik-cart-products .checkout-button,
+    .zhyvchik-checkout #place_order {
       position: relative;
       display: block;
       text-align: center;
@@ -1960,7 +1961,8 @@ ul {
 
 /* 2. Ховаємо самі радіо-кнопки */
 /* Ми не використовуємо display: none, щоб не зламати логіку форми і доступність */
-.zhyvchik-checkout .woocommerce-shipping-methods input[type="radio"] {
+.zhyvchik-checkout .woocommerce-shipping-methods input[type="radio"],
+.zhyvchik-checkout .wc_payment_methods input[type="radio"] {
     position: absolute;
     opacity: 0;
     pointer-events: none;
@@ -2074,7 +2076,19 @@ ul {
 }
 
 .zhyvchik-checkout .woocommerce-checkout-review-order-table tbody {
-  gap: 2.4rem;
+  gap: 1.2rem;
+  position: relative;
+  margin-bottom: 2.4rem;
+}
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table tbody::after {
+  content: '';
+  position: absolute;
+  bottom: -1.2rem;
+  left: auto;
+  width: 100%;
+  height: 1px;
+  background-color: #D0C5AF;
 }
 
 .zhyvchik-checkout .woocommerce-checkout-review-order-table thead .product-name {
@@ -2136,5 +2150,120 @@ ul {
   font-size: 1.4rem;
   color: #1B1C15;
 }
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table tfoot {
+  gap: 1.2rem;
+}
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table tfoot th {
+  font-family: 'Manrope Variable';
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: #4D4635;
+}
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table tfoot td {
+  font-family: 'Manrope Variable';
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: #1B1C15;
+}
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table tfoot tr {
+  display: flex;
+  justify-content: space-between;
+}
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table tfoot .order-total {
+  padding-top: 0.8rem;
+}
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table tfoot .order-total th,
+.zhyvchik-checkout .woocommerce-checkout-review-order-table tfoot .order-total td {
+  font-family: 'Noto Serif Variable';
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.8rem;
+  color: #1B1C15;
+}
+
+.zhyvchik-checkout .woocommerce-checkout-review-order-table tfoot .order-total td {
+  color: #775A19;
+}
+
+/* ОПЛАТА */
+.zhyvchik-checkout .wc_payment_methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-bottom: 3.2rem;
+}
+
+.zhyvchik-checkout .wc_payment_method {
+    display: block;
+    padding: 2rem;
+    border: 1px solid rgba(208, 197, 175, 0.1);
+    cursor: pointer;
+    background-color: #ffffff;
+    font-family: 'Manrope Variable';
+    transition: all 0.3s ease;
+    user-select: none; /* Забороняє виділення тексту при швидкому кліку */
+    position: relative;
+}
+
+.zhyvchik-checkout .wc_payment_methods input[type="radio"] + label {
+  color: #4D4635;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.zhyvchik-checkout .wc_payment_method label::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1; /* Лейбл стає поверх всього в li */
+}
+
+.zhyvchik-checkout .wc_payment_methods label::after  {
+  content: '';
+  position: absolute;
+  width: 1.6rem;
+  height: 1.6rem;
+  right: 7%;
+  border: 1px solid #7F7663;
+  border-radius: 50%;
+  box-sizing: border-box
+}
+
+.zhyvchik-checkout .wc_payment_methods .payment_box {
+  margin-top: 1.2rem;
+  padding: 1.6rem;
+  background-color: rgba(255, 222, 165, 0.3);
+  border: 1px solid rgba(255, 222, 165, 1);
+}
+
+.zhyvchik-checkout .wc_payment_method:has(input[type="radio"]:checked) {
+  border: 1px solid rgba(119, 90, 25, 0.3);
+  border-radius: 2px;
+}
+
+.zhyvchik-checkout .wc_payment_methods input[type="radio"]:checked + label {
+  font-weight: 700;
+}
+
+.zhyvchik-checkout .wc_payment_methods input[type="radio"]:checked + label::after {
+   border: 4px solid #7F7663;
+} 
+
+.zhyvchik-checkout .woocommerce-terms-and-conditions-wrapper {
+  display: none;
+}
+
+
 
 }
