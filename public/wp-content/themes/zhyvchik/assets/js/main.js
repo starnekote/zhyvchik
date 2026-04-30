@@ -75,3 +75,33 @@ jQuery(function ($) {
         }, 300); // 300 мілісекунд затримки
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Отримуємо радіокнопки за ім'ям групи
+    const authRadios = document.querySelectorAll('input[name="auth_mode"]');
+    
+    // Отримуємо секції форм
+    const loginSection = document.querySelector('.u-column1.col-1');
+    const registerSection = document.querySelector('.u-column2.col-2');
+
+    // Функція, яка перевіряє стан і показує потрібну форму
+    function toggleForms() {
+        const activeRadio = document.querySelector('input[name="auth_mode"]:checked');
+        
+        if (activeRadio.id === 'zhyvchik-login') {
+            loginSection.style.display = 'block';
+            registerSection.style.display = 'none';
+        } else {
+            loginSection.style.display = 'none';
+            registerSection.style.display = 'block';
+        }
+    }
+
+    // Додаємо прослуховувач подій для кожної радіокнопки в групі
+    authRadios.forEach(radio => {
+        radio.addEventListener('change', toggleForms);
+    });
+
+    // Викликаємо функцію відразу, щоб встановити правильний стан при завантаженні
+    toggleForms();
+});
