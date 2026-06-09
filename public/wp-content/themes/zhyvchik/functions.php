@@ -113,4 +113,24 @@ function custom_override_checkout_fields_placeholders( $fields ) {
     return $fields;
 }
 
+add_filter('woocommerce_cart_totals_order_total_html', function($value) {
+
+    if ( ! is_cart() || is_checkout() ) {
+        return $value;
+    }
+
+    $cart = WC()->cart;
+
+    // повний total (з доставкою)
+    $total = (float) $cart->get_total('edit');
+
+    // доставка + податок доставки
+    $shipping = (float) $cart->get_shipping_total() + (float) $cart->get_shipping_tax();
+
+    // total БЕЗ доставки
+    $new_total = $total - $shipping;
+
+    return wc_price($new_total);
+});
+
 ?>

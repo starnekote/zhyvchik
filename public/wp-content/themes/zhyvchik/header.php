@@ -8,10 +8,11 @@
 </head>
 <body>
     <header>
-        <div>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="search-box">
+            <svg class="search-trigger" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18.75 18.75L12.75 12.75M14.75 7.75C14.75 11.6134 11.6134 14.75 7.75 14.75C3.88659 14.75 0.75 11.6134 0.75 7.75C0.75 3.88659 3.88659 0.75 7.75 0.75C11.6134 0.75 14.75 3.88659 14.75 7.75L18.75 18.75" stroke="#2D2D2D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
+            <?php echo do_shortcode('[aws_search_form]') ?>
         </div>
         <a class="logo" href="<?php echo home_url(); ?>">
             ЖИВЧИК

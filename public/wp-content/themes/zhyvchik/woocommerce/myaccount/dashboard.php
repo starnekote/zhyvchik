@@ -28,7 +28,7 @@ $allowed_html = array(
 );
 ?>
 
-<p>
+<p class="zhyvchik-my-account-information">
 	<?php
 	printf(
 		/* translators: 1: user display name 2: logout url */
@@ -39,7 +39,7 @@ $allowed_html = array(
 	?>
 </p>
 
-<p>
+<p class="zhyvchik-my-account-notification">
 	<?php
 	/* translators: 1: Orders URL 2: Address URL 3: Account URL. */
 	$dashboard_desc = __( 'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">billing address</a>, and <a href="%3$s">edit your password and account details</a>.', 'woocommerce' );

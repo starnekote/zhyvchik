@@ -63,13 +63,68 @@ ul {
       padding: 0;
 }
 
+/* Глобальна зміна тексту, що вводиться користувачем */
+body input[type="text"],
+body input[type="email"],
+body input[type="tel"],
+body input[type="password"],
+body input[type="url"],
+body input[type="search"],
+body input[type="number"],
+body textarea {
+    font-family: "Manrope Variable" !important; /* Ваша назва шрифту */
+    font-size: 1.4rem !important;                  /* Розмір шрифту (16px ідеально для мобільних, щоб екран не зумився) */
+    color: #222222 !important;                  /* Колір самого тексту, який пише користувач */
+    font-weight: 500 !important;                 /* Насиченість літер */
+    letter-spacing: 0.3px !important;            /* Відстань між літерами */
+}
+
+body input[type="text"]:focus,
+body input[type="email"]:focus,
+body input[type="tel"]:focus,
+body input[type="password"]:focus,
+body input[type="url"]:focus,
+body input[type="search"]:focus,
+body input[type="number"]:focus,
+body textarea:focus {
+  outline: none !important; /* Ховаємо стандартний чорний контур */
+}
+
+body input[type="text"]:not(#coupon_code),
+body input[type="email"],
+body input[type="tel"],
+body input[type="password"],
+body input[type="url"],
+body input[type="search"] {
+  padding: 0 1rem;
+}
+
+@media (min-width: 512px) {
+  html {
+      font-size: 12px;
+  }
+
+  .container {
+      width: 470px;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+      font-size: 16px;
+  }
+
+  .container {
+      width: 706px;
+  }
+}
+
 @media (min-width: 390px) {
     html {
         font-size: 10px;
     }
 
     header {
-      background-color: #ffffff;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -89,7 +144,17 @@ ul {
       letter-spacing: 0.4rem;
       line-height: 6.4rem;
       color: #2D2D2D;
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+      opacity: 1;
+      visibility: visible;
     }
+
+    .search-box.active + .logo {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-5px); /* Ефект легкого зсуву вгору при зникненні */
+      pointer-events: none; /* Щоб не можна було випадково клікнути */
+}
 
     header .icons {
       display: inline-flex;
@@ -100,8 +165,216 @@ ul {
       width: 2.4rem;
       height: 2.4rem;
     }
+}
+  /* СПОВІЩЕННЯ */
+  @media (min-width: 390px) {
+ /* Головний фіксований контейнер для сповіщень */
+.woocommerce-notices-wrapper {
+    position: fixed !important;
+    top: 20px;
+    left: 43.5%;
+    transform: translate(-50%, -150px); /* Ховаємо високо за межі екрану */
+    z-index: 999999 !important;
+    width: 80% !important;
+    opacity: 0;
+    pointer-events: none; /* Пропускає кліки крізь себе, коли прихований */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2), opacity 0.3s ease;
+}
+
+/* Стан, коли сповіщення активне і з'являється на екрані */
+.woocommerce-notices-wrapper.is-visible {
+    transform: translate(-50%, 0);
+    opacity: 1;
+    pointer-events: auto; /* Дозволяє натискати на кнопки/посилання */
+}
+
+/* Стан плавного зникнення вгору */
+.woocommerce-notices-wrapper.is-fading {
+    transform: translate(-50%, -40px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.4s ease-in, opacity 0.3s ease-in;
+}
+
+/* Стилізація самих плашок повідомлень WooCommerce */
+.woocommerce-notices-wrapper .woocommerce-message,
+.woocommerce-notices-wrapper .woocommerce-info,
+.woocommerce-notices-wrapper .woocommerce-error {
+    margin: 0 0 10px 0 !important;
+    padding: 16px 24px !important;
+    border-left: solid 4px #775A19 !important;
+    border-radius: 2px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.05) !important;
+    font-size: 1.4rem !important;
+    font-family: 'Manrope Variable' !important;
+    line-height: 2rem !important;
+    font-weight: 500 !important;
+    color: #F2F1E5 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+}
+
+.woocommerce-notices-wrapper .woocommerce-message::before,
+.woocommerce-notices-wrapper .woocommerce-info::before,
+.woocommerce-notices-wrapper .woocommerce-error::before {
+  content: "";
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background-image: url(assets/images/notice.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 16px;
+  opacity: 1;
+} 
+
+/* Колір для успішних дій (напр. видалено, кошик оновлено) */
+.woocommerce-notices-wrapper .woocommerce-message {
+    background-color: #303129 !important; /* Приємний зелений */
+}
+
+/* Колір для помилок (якщо будуть) */
+.woocommerce-notices-wrapper .woocommerce-error {
+    background-color: #f05252 !important; /* Червоний */
+    list-style: none !important;
+}
+
+/* Стилізація кнопок дій, таких як "Відмінити?" (Повернути товар) */
+.woocommerce-notices-wrapper .woocommerce-message a.restore-item,
+.woocommerce-notices-wrapper .woocommerce-message a.button,
+.woocommerce-notices-wrapper .woocommerce-info a.button {
+    background-color: #5F5E5E !important;
+    color: #F2F1E5 !important;
+    padding: 6px 14px !important;
+    border-radius: 6px !important;
+    font-family: 'Manrope Variable' !important;
+    line-height: 2rem !important;
+    font-weight: 400 !important;
+    text-decoration: none !important;
+    font-size: 1.4rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.6px;
+    transition: background-color 0.2s ease !important;
+    display: inline-block !important;
+    float: none !important; /* Скидаємо базові флоати WooCommerce */
+    margin: 0 0 0 15px !important;
+}
+
+.woocommerce-notices-wrapper .woocommerce-message a.restore-item:hover,
+.woocommerce-notices-wrapper .woocommerce-message a.button:hover {
+    background-color: rgba(255, 255, 255, 0.4) !important;
+    color: #ffffff !important;
+}
+  }
+
+        /* HERO SECTION */
+  @media (min-width: 390px) {
+    .hero {
+      width: 100%;
+      height: fit-content;
+    }
+
+    .hero .hero-swiper {
+      position: relative;
+    }
+
+    .hero ul {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero ul li {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 9/16;
+      background-position: center;
+      background-size: contain;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .hero .swiper-slide::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(45,45,45,0) 0%, rgba(45,45,45, 0.5) 100%);
+      z-index: 1;
+    }
+
+    .hero .swiper-slide h1, 
+    .hero .swiper-slide h2, 
+    .hero .swiper-slide button {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero .swiper-slide button {
+      margin: 3.2rem 0 6.4rem 0;
+      padding: 1.2rem 3.2rem;
+      background-color: #Ffffff;
+      border: none;
+      font-family: 'Inter Variable';
+      font-weight: 500;
+      letter-spacing: 0.14rem;
+      font-size: 1.4rem;
+      color: #2D2D2D;
+      text-transform: uppercase;
+    }
+
+    .hero .swiper-slide h1 {
+      font-family: 'Playfair Display';
+      font-weight: 400;
+      font-size: 3.6rem;
+      color: #Ffffff;
+    }
+
+    .hero .swiper-slide h2 {
+      font-family: 'Inter Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: #Ffffff;
+      margin-top: 1.6rem;
+      text-transform: uppercase;
+    }
+
+    .hero .swiper-pagination {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      bottom: 20px !important;
+    }
+
+    .hero .swiper-pagination-bullet {
+      width: 48px !important;
+      height: 2px !important;
+      background-color: rgba(250, 250, 250, 0.4) !important;
+      border-radius: 0 !important;
+      opacity: 1 !important;
+      margin: 0 !important;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero .swiper-pagination-bullet-active {
+      background-color: rgba(250, 250, 250, 1) !important;
+    }
+  }
+@media (min-width: 512px) {
+
+}
+
+
 
     /* КАТЕГОРІЇ */
+    @media (min-width: 390px) {
     .container {
       position: relative;
       margin: 0 auto;
@@ -197,104 +470,6 @@ ul {
       font-weight: 400;
       color: #ffffff;
       z-index: 2;
-    }
-
-    /* HERO SECTION */
-
-    .hero {
-      width: 100%;
-      height: fit-content;
-    }
-
-    .hero .hero-swiper {
-      position: relative;
-    }
-
-    .hero ul {
-      list-style: none;
-      padding: 0;
-      width: 100%;
-      height: auto;
-    }
-
-    .hero ul li {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 9/16;
-      background-position: center;
-      background-size: contain;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-    }
-
-    .hero .swiper-slide::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(45,45,45,0) 0%, rgba(45,45,45, 0.5) 100%);
-      z-index: 1;
-    }
-
-    .hero .swiper-slide h1, 
-    .hero .swiper-slide h2, 
-    .hero .swiper-slide button {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero .swiper-slide button {
-      margin: 3.2rem 0 6.4rem 0;
-      padding: 1.2rem 3.2rem;
-      background-color: #Ffffff;
-      border: none;
-      font-family: 'Inter Variable';
-      font-weight: 500;
-      letter-spacing: 0.14rem;
-      font-size: 1.4rem;
-      color: #2D2D2D;
-      text-transform: uppercase;
-    }
-
-    .hero .swiper-slide h1 {
-      font-family: 'Playfair Display';
-      font-weight: 400;
-      font-size: 3.6rem;
-      color: #Ffffff;
-    }
-
-    .hero .swiper-slide h2 {
-      font-family: 'Inter Variable';
-      font-weight: 400;
-      font-size: 1.4rem;
-      color: #Ffffff;
-      margin-top: 1.6rem;
-      text-transform: uppercase;
-    }
-
-    .hero .swiper-pagination {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      bottom: 20px !important;
-    }
-
-    .hero .swiper-pagination-bullet {
-      width: 48px !important;
-      height: 2px !important;
-      background-color: rgba(250, 250, 250, 0.4) !important;
-      border-radius: 0 !important;
-      opacity: 1 !important;
-      margin: 0 !important;
-      transition: background-color 0.3s ease;
-    }
-
-    .hero .swiper-pagination-bullet-active {
-      background-color: rgba(250, 250, 250, 1) !important;
     }
 
     /* ОСТАННІ НАДХОДЖЕННЯ */
@@ -469,7 +644,11 @@ ul {
     .products li .add_to_cart_button,
     .products li .add_to_cart_button.product_type_variable,
     .woocommerce-form-login__submit,
-    .woocommerce-form-register__submit {
+    .woocommerce-form-register__submit,
+    .return-to-shop,
+    .woocommerce-orders-table__cell-order-actions .button,
+    .woocommerce-Button,
+    .woocommerce-address-fields .button {
       display: block;
       width: 100%;
       padding: 1.2rem 0;
@@ -628,6 +807,47 @@ ul {
 
     /* СТОРІНКА КАТАЛОГ */
     /* ХЕДЕР */
+        /* Секція з пошуком */
+    .search-box {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden; /* Щоб форма не вилазила під час анімації розширення */
+      min-height: 40px; 
+    }
+
+    /* Початковий стан іконки */
+    .search-trigger {
+      cursor: pointer;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      display: block;
+    }
+
+    /* Початковий стан форми Advanced Woo Search */
+    .search-box .aws-container {
+      opacity: 0;
+      visibility: hidden;
+      max-width: 0;
+      transition: opacity 0.4s ease, max-width 0.4s ease, visibility 0.4s;
+      white-space: nowrap; /* Запобігає ламанню форми під час анімації */
+    }
+
+    /* --- АКТИВНИЙ СТАН (коли додано клас .active) --- */
+
+    /* Ховаємо першу SVG */
+    .search-box.active .search-trigger {
+      opacity: 0;
+      transform: scale(0.8);
+      pointer-events: none;
+      display: none; /* Повністю прибираємо з потоку після зникнення */
+    }
+
+    /* Плавно показуємо та розгортаємо форму */
+    .search-box.active .aws-container {
+      opacity: 1;
+      visibility: visible;
+      max-width: 300px; /* Вкажіть бажану максимальну ширину поля пошуку */
+    }
     .catalog-header {
       margin: 3.2rem 0;
     }
@@ -766,8 +986,8 @@ ul {
 
     /* 3. Саме вікно з фільтрами (те саме, що має бути 70%) */
     .wc-block-product-filters__overlay-dialog {
-      height: 70vh !important; /* vh краще для мобільних, ніж % */
-      max-height: 70vh !important;
+      height: fit-content !important; /* vh краще для мобільних, ніж % */
+      max-height: 90vh !important;
       top: auto !important;    /* Скасовуємо стандартне позиціонування зверху */
       margin-top: auto !important;
       
@@ -803,7 +1023,7 @@ ul {
 
     .wc-block-product-filters__overlay-content {
       gap: 4rem;
-      padding: 0 3.2rem;
+      padding: 0 3.2rem 3.2rem 3.2rem;
     }
 
     /* 1. Головний контейнер колонок */
@@ -1290,7 +1510,8 @@ ul {
 
     .zhyvchik-add-to-cart .single_add_to_cart_button,
     .zhyvchik-cart-products .checkout-button,
-    .zhyvchik-checkout #place_order {
+    .zhyvchik-checkout #place_order,
+    .zhyvchik-reviews .form-submit input.submit {
       position: relative;
       display: block;
       text-align: center;
@@ -1335,7 +1556,7 @@ ul {
     /* ВІДГУКИ ТОВАРУ */
 
     .zhyvchik-reviews .woocommerce-Reviews {
-      margin-top: 8rem;
+      margin: 3.2rem 0;
     }
 
     .zhyvchik-reviews .woocommerce-Reviews .zhyvchik-reviews-header {
@@ -1398,7 +1619,7 @@ ul {
       display: flex;
       flex-direction: column;
       gap: 4.8rem;
-      padding: 6.4rem 0;
+      margin: 3.2rem 0;
     }
 
     .zhyvchik-reviews .woocommerce-Reviews .commentlist .comment {
@@ -1486,7 +1707,113 @@ ul {
       font-weight: 400;
       font-size: 1.4rem;
       line-height: 2rem;
+      margin-bottom: 3.2rem;
      }
+
+     /* СЕКЦІЯ З ЗАЛИШЕННЯМ ВІДГУКУ */
+     .zhyvchik-reviews #review_form_wrapper {
+      margin: 4rem 0;
+      padding: 4.8rem;
+      background-color: #FFFFFF;
+      border: 1px solid rgba(208, 197, 175, 0.2);
+     }
+
+     .zhyvchik-reviews #review_form_wrapper > h1 {
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+      color: #1B1C15;
+      padding-bottom: 0.8rem;
+      text-align: center;
+     }
+
+     .zhyvchik-reviews #review_form_wrapper > h2 {
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      color: #7F7663;
+      padding-bottom: 3.2rem;
+      text-align: center;
+     }
+
+    .zhyvchik-reviews .comment-reply-title,
+    .zhyvchik-reviews #comment-form-rating-label {
+      display: none;
+    }
+
+    .zhyvchik-reviews .comment-form-rating {
+      margin-bottom: 3.2rem;
+    }
+
+        /* Контейнер зірок */
+    .comment-form-rating .stars span {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      justify-content: center;
+    }
+
+    /* Прибираємо стандартний стиль WooCommerce */
+    .comment-form-rating .stars a {
+      float: none !important;
+      position: relative;
+      font-size: 0;
+      width: 2rem;
+      height: 2rem;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    /* Неактивна зірка */
+    .comment-form-rating .stars a::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      background-image: url("assets/images/star-empty.svg");
+    }
+
+    /* Hover (наведення мишки) */
+    /* 1. Сама зірочка, на яку навели */
+    .comment-form-rating .stars:hover a:hover::before,
+    /* 2. Усі зірочки, які розташовані В коді ПЕРЕД тією, на яку навели */
+    .comment-form-rating .stars a:has(~ a:hover)::before {
+        background-image: url("assets/images/star-full.svg");
+    }
+
+    /* Активний рейтинг (фіксований клік) */
+    /* 1. Сама активна (клікнута) зірочка */
+    .comment-form-rating .stars.selected a.active::before,
+    /* 2. Усі зірочки, які розташовані В коді ПЕРЕД активною */
+    .comment-form-rating .stars.selected a:has(~ a.active)::before {
+        background-image: url("assets/images/star-full.svg");
+    }
+
+    .zhyvchik-reviews .comment-form-comment {
+      padding: 8px 12px;
+      margin-bottom: 3.2rem;
+    }
+
+    .zhyvchik-reviews .comment-form-comment label {
+      font-family: 'Manrope Variable';
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      color: rgba(127, 118, 99, 0.5);
+      padding-bottom: 0.85rem;
+    }
+
+    .zhyvchik-reviews .comment-form-comment textarea {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #D0C5AF;
+    }
+
+
 
      /* СЕКЦІЯ З ДОПРОДАЖАМИ */
     .up-sells {
@@ -1580,6 +1907,10 @@ ul {
       display: none;
     }
 
+    .zhyvchik-cart-products .cross-sells {
+      display: none !important;
+    }
+
      /* ЗОБРАЖЕННЯ ТОВАРУ */
      .zhyvchik-cart-products .product-thumbnail {
       grid-row-start: 1;
@@ -1616,12 +1947,28 @@ ul {
       color: rgba(95,94,94,0.4);
      }
 
+     .return-to-shop {
+      margin: 3rem 0 6rem 0;
+      
+     }
+
+     .return-to-shop a {
+      display: block;
+        color: #ffffff;
+     }
+
      /* НАЗВА ТОВАРУ */
+
+     .zhyvchik-cart-products .container > h2 {
+      padding-top: 3rem;
+     }
 
      .zhyvchik-cart-products .product-name {
       grid-column-start: 2;
       grid-column-end: 4;
      }
+
+
 
      .zhyvchik-cart-products .product-name h1 {
       font-family: 'Noto Serif Variable';
@@ -1647,12 +1994,14 @@ ul {
      }
 
     .zhyvchik-cart-products .qty-wrap {
+      background-color: transparent;
       display: inline-flex;
       padding-bottom: 0.8rem;
       border-bottom: rgba(208,197,175,0.3) 1px solid;
     }
 
     .zhyvchik-cart-products .qty-wrap * {
+      background-color: transparent;
       font-family: 'Manrope Variable';
       font-weight: 400;
       font-size: 1.4rem;
@@ -1668,7 +2017,6 @@ ul {
 
     .zhyvchik-cart-products .qty-wrap button {
       border: none;
-      background-color: #ffffff;
     }
 
     input::-webkit-outer-spin-button,
@@ -1760,7 +2108,8 @@ ul {
       background-color: transparent;
   }
 
-  .zhyvchik-cart-products .coupon button {
+  .zhyvchik-cart-products .coupon button,
+  .woocommerce-orders-table__cell::before {
       font-family: 'Manrope Variable';
       font-weight: 700;
       font-size: 1.2rem;
@@ -1849,6 +2198,8 @@ ul {
   line-height: 3.2rem;
   color: #1B1C15;
 }
+
+
 
 
 /* СТОРІНКА ОФОРМЛЕННЯ ЗАМОВЛЕННЯ */
@@ -1964,14 +2315,15 @@ ul {
 /* 2. Ховаємо самі радіо-кнопки */
 /* Ми не використовуємо display: none, щоб не зламати логіку форми і доступність */
 .zhyvchik-checkout .woocommerce-shipping-methods input[type="radio"],
-.zhyvchik-checkout .wc_payment_methods input[type="radio"] {
+.zhyvchik-checkout .wc_payment_methods input[type="radio"]  {
     position: absolute;
     opacity: 0;
     pointer-events: none;
 }
 
 /* 3. Базові стилі для "кнопок" (стилізуємо сам текст label) */
-.zhyvchik-checkout .woocommerce-shipping-methods input[type="radio"] + label {
+.zhyvchik-checkout .woocommerce-shipping-methods input[type="radio"] + label,
+.zhyvchik-my-account .woocommerce-MyAccount-navigation ul li a {
     display: block;
     padding: 8px 0;
     border: 1px solid rgba(208, 197, 175, 0.3);
@@ -1988,10 +2340,11 @@ ul {
 
 
 /* 5. Стилі для АКТИВНОГО (обраного) елемента */
-.zhyvchik-checkout .woocommerce-shipping-methods input[type="radio"]:checked + label {
+.zhyvchik-checkout .woocommerce-shipping-methods input[type="radio"]:checked + label,
+.zhyvchik-my-account .woocommerce-MyAccount-navigation ul li a[aria-current="page"] {
     border-color: #775A19;     /* Головний колір (наприклад, синій) */
     background-color: rgba(119,90,25,0.05); /* Легкий фон */
-    color: #775A19;            /* Колір тексту */
+    color: #775A19;            /* Колір тексту */ 
     box-shadow: 0 2px 5px rgba(119,90,25,0.05); /* Легка тінь для акценту */
 }
 
@@ -2242,11 +2595,14 @@ ul {
   box-sizing: border-box
 }
 
-.zhyvchik-checkout .wc_payment_methods .payment_box {
-  margin-top: 1.2rem;
+.zhyvchik-checkout .wc_payment_methods .payment_box,
+.woocommerce-noreviews,
+.woocommerce-MyAccount-content .zhyvchik-my-account-notification {
+  margin: 1.2rem 0 3.2rem;
   padding: 1.6rem;
   background-color: rgba(255, 222, 165, 0.3);
   border: 1px solid rgba(255, 222, 165, 1);
+  color: #5B4000;
 }
 
 .zhyvchik-checkout .wc_payment_method:has(input[type="radio"]:checked) {
@@ -2414,6 +2770,7 @@ ul {
 
 .zhyvchik-my-account .woocommerce-form-login__submit {
   margin-top: 3rem;
+  border: none;
 }
 
 .zhyvchik-my-account .lost_password {
@@ -2444,7 +2801,8 @@ ul {
   margin: 0.4rem 0;
 }
 
-.zhyvchik-my-account .woocommerce-privacy-policy-text p {
+.zhyvchik-my-account .woocommerce-privacy-policy-text p,
+.cart-empty {
   width: 100%; /* Початкова ширина */
   flex-shrink: 0;
   display: block;
@@ -2460,6 +2818,198 @@ ul {
   border-radius: 4px;
   box-sizing: border-box;
   margin: 1.6rem 0 !important; 
+}
+
+.zhyvchik-my-account .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link--dashboard,
+.zhyvchik-my-account .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link--downloads {
+  display: none;
+}
+
+.zhyvchik-my-account .woocommerce-MyAccount-navigation ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 2rem;
+  row-gap: 3rem;
+  position: relative;
+}
+
+.zhyvchik-my-account .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link--customer-logout {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  background-color: #FFDEA5;
+  grid-row: 1;
+}
+
+.zhyvchik-my-account .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link--orders,
+.zhyvchik-my-account .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link--edit-address,
+.zhyvchik-my-account .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link--edit-account {
+   grid-row: 2;
+}
+
+/* СЕКЦІЯ З ЗАМОВЛЕННЯМИ */
+.zhyvchik-my-account .woocommerce-orders-table__header-order-actions {
+  display: none;
+}
+
+.woocommerce-MyAccount-content .zhyvchik-my-account-information {
+  margin: 3.2rem 0;
+  font-family: 'Noto Serif Variable';
+  font-weight: 400;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  color: #1B1C15;
+} 
+
+.woocommerce-MyAccount-content .zhyvchik-my-account-information a {
+  font-size: 600;
+  color: #775A19;
+  font-style: italic;
+}
+
+.woocommerce-orders-table {
+  background-color: #F5F4E8;
+  margin: 3.2rem 0;
+}
+
+
+/* Перетворюємо табличну структуру на блочну */
+  .woocommerce-orders-table, 
+  .woocommerce-orders-table tbody, 
+  .woocommerce-orders-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  /* Повністю ховаємо верхню шапку оригінальної таблиці, щоб вона не заважала */
+  .woocommerce-orders-table thead {
+    display: none !important;
+  }
+
+  /* Налаштування Grid-контейнера для кожного замовлення */
+  .woocommerce-orders-table tbody tr.woocommerce-orders-table__row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 рівні колонки */
+    grid-template-rows: auto auto auto;    /* 3 рядочки */
+    gap: 16px 10px;                        /* 16px між рядками, 10px між колонками */
+    padding: 16px;
+    border-bottom: 2px solid #e6e6e6;
+    box-sizing: border-box;
+    align-items: start;                    /* Вирівнювання вмісту комірок по верхньому краю */
+  }
+
+  /* Базові стилі для всіх комірок */
+  .woocommerce-orders-table__cell {
+    display: block;
+    padding: 0 !important;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* Генерація підписів (БЕРЕ ТЕКСТ З data-title ДЛЯ ВСІХ КОМІРОК) */
+  .woocommerce-orders-table__cell::before {
+    content: attr(data-title) ": ";
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* --- РЯДОК 1 --- */
+  .woocommerce-orders-table__cell-order-number {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: left;
+  }
+  
+  /* Тільки для номера замовлення робимо посилання жирним та більшим */
+  .woocommerce-orders-table__cell-order-number a {
+      font-family: 'Noto Serif Variable';
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: #1B1C15;
+  }
+  
+  .woocommerce-orders-table__cell-order-date {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: center;
+  }
+  
+  .woocommerce-orders-table__cell-order-status {
+    grid-column: 3;
+    grid-row: 1;
+    text-align: right;
+  }
+
+  /* --- РЯДОК 2 --- */
+  .woocommerce-orders-table__cell-order-total {
+    grid-column: 1 / span 2; /* Займає 2 колонки */
+    grid-row: 2;
+    text-align: left;
+  }
+  
+  .woocommerce-orders-table__cell-mrkv_ua_ship_ttn-column {
+    grid-column: 3;
+    grid-row: 2;
+    text-align: right;
+  }
+
+  /* --- РЯДОК 3 --- */
+  .woocommerce-orders-table__cell-order-actions {
+    grid-column: 1 / span 3; /* На всю ширину */
+    grid-row: 3;
+    text-align: center;
+    margin-top: 6px;
+  }
+
+  /* ВИМИКАЄМО підпис "Дії:" тільки для кнопки Перегляд */
+  .woocommerce-orders-table__cell-order-actions::before {
+    display: none;
+  }
+
+/* СЕКЦІЯ З АДРЕСАМИ */
+
+.zhyvchik-my-account .woocommerce-Addresses {
+  margin: 3.2rem 0;
+}
+
+.zhyvchik-my-account .woocommerce-Addresses h2 {
+  margin: 1.6rem 0;
+}
+
+.zhyvchik-my-account .woocommerce-Addresses header {
+  padding: 0;
+  justify-content: space-between;
+}
+
+.zhyvchik-my-account .woocommerce-Addresses .woocommerce-Address-title a {
+  display: block;
+  padding: 0.5rem 0.3rem;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  color: #775A19;
+  border: 1px solid #D0C5AF;
+}
+
+.zhyvchik-my-account .woocommerce-Addresses address * {
+  display: inline;
+}
+
+.zhyvchik-my-account .woocommerce-Addresses address br {
+  display: none;
+}
+
+.woocommerce-Button,
+.woocommerce-address-fields .button {
+  margin: 3.2rem 0;
+  border: none;
+}
+
+.woocommerce-EditAccountForm,
+.woocommerce-address-fields__field-wrapper {
+  margin: 3.2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
 }
 
 }
